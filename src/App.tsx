@@ -1,24 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Spline from '@splinetool/react-spline';
 
 function App() {
+  const [showDarkMode, setShowDarkMode] = useState(false)
+  const lightMode = "https://prod.spline.design/VqE6SZu4SDOg3c-6/scene.splinecode";
+  const darkMode = "https://prod.spline.design/eiqhbn7DxVbIf46H/scene.splinecode";
+
+  const handleDarkModeSwitch = () => {
+    setShowDarkMode(!showDarkMode);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
     </div>
   );
 }
