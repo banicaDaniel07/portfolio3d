@@ -1,34 +1,36 @@
-import React, { useState } from 'react';
-import './App.css';
-import Spline from '@splinetool/react-spline';
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
-function App() {
-  const [showDarkMode, setShowDarkMode] = useState(false)
-  const lightMode = "https://prod.spline.design/VqE6SZu4SDOg3c-6/scene.splinecode";
-  const darkMode = "https://prod.spline.design/eiqhbn7DxVbIf46H/scene.splinecode";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Projects from "./pages/Projects";
+import Contact from "./pages/Contact";
+import Footer from "./components/Footer";
 
-  const handleDarkModeSwitch = () => {
-    setTimeout(() => {
-      setShowDarkMode(!showDarkMode);
-    }, 200)
-  }
-
+const App = () => {
   return (
-    <div className="App">
-      <div className="absolute w-screen top-0 right-0 left-0 bg-transparent">
-        <input
-          type="checkbox"
-          onClick={handleDarkModeSwitch}
-          value="synthwave"
-          className="toggle theme-controller bg-amber-300 border-sky-400 [--tglbg:theme(colors.sky.500)] checked:bg-blue-300 checked:border-blue-800 checked:[--tglbg:theme(colors.blue.900)] row-start-1 col-start-1 col-span-2 mt-2 ml-2"
-          defaultChecked
-        />
-      </div>
-      <div className="w-screen h-screen">
-        <Spline scene={showDarkMode ? darkMode : lightMode} />
-      </div>
-    </div>
+    <main className='bg-slate-300/20'>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route
+            path='/*'
+            element={
+              <>
+                <Routes>
+                  <Route path='/about' element={<About />} />
+                  <Route path='/projects' element={<Projects />} />
+                  <Route path='/contact' element={<Contact />} />
+                </Routes>
+                <Footer />
+              </>
+            }
+          />
+        </Routes>
+      </Router>
+    </main>
   );
-}
+};
 
 export default App;
