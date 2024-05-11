@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 import { projects } from "../constants";
-import { arrow } from "../assets/icons";
 import CTA from "../components/CTA";
 
 const Projects = () => {
@@ -51,7 +50,7 @@ const Projects = () => {
                   Live Link
                 </Link>
                 <img
-                  src={arrow}
+                  // src={arrow}
                   alt='arrow'
                   className='w-4 h-4 object-contain'
                 />

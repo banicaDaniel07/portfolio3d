@@ -3,7 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 // @ts-ignore
 import sakura from '../assets/sakura.mp3';
-import { soundoff, soundon } from "../assets/icons";
+import soundoff from '../assets/images/soundoff.png'
+import soundon from '../assets/images/soundon.png'
 import HomeInfo from "../components/HomeInfo";
 import Spline from "@splinetool/react-spline";
 
