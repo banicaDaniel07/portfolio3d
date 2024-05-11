@@ -68,6 +68,8 @@ const Home = () => {
         className="w-screen h-screen"
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
+        onTouchStart={handleMouseDown}
+        onTouchEnd={handleMouseUp}
       >
         <Spline
           style={{ cursor: grabbing ? 'grabbing' : 'grab' }}
