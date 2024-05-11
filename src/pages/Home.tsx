@@ -25,14 +25,16 @@ const Home = () => {
   }
 
   useEffect(() => {
+    const audio = audioRef.current;
+
     if (isPlayingMusic) {
-      audioRef.current.play();
+      audio.play();
     }
 
     return () => {
-      audioRef.current.pause();
+      audio.pause();
     };
-  }, [isPlayingMusic]);
+  }, [isPlayingMusic, audioRef]);
 
   const handleMouseDown = () => {
     setGrabbing(true);

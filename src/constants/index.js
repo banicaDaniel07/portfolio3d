@@ -1,9 +1,7 @@
 import oraroo from '../assets/images/oraroo.png';
 import {
-    car,
     contact,
     css,
-    estate,
     express,
     git,
     github,
@@ -19,10 +17,7 @@ import {
     react,
     redux,
     sass,
-    snapgram,
-    summiz,
     tailwindcss,
-    threads,
     typescript
 } from "../assets/icons";
 

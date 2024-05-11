@@ -1,5 +1,5 @@
 // import emailjs from "@emailjs/browser";
-import { Suspense, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 import useAlert from "../hooks/useAlert";
 import Alert from "../components/Alert";
@@ -7,7 +7,11 @@ import Alert from "../components/Alert";
 const Contact = () => {
   const formRef: any = useRef();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const { alert, showAlert, hideAlert } = useAlert();
+  const {
+    alert,
+    // showAlert,
+    // hideAlert
+  } = useAlert();
   const [loading, setLoading] = useState(false);
   const [currentAnimation, setCurrentAnimation] = useState("idle");
 
@@ -19,6 +23,7 @@ const Contact = () => {
   const handleBlur = () => setCurrentAnimation("idle");
 
   const handleSubmit = (e: any) => {
+    if (currentAnimation === '') return;
     e.preventDefault();
     setLoading(true);
     setCurrentAnimation("hit");
