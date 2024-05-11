@@ -1,4 +1,5 @@
 import { Suspense, useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence } from 'framer-motion';
 
 // import sakura from '../assets/sakura.mp3';
 import { soundoff, soundon } from "../assets/icons";
@@ -42,10 +43,24 @@ const Home = () => {
 
   return (
     <section className='w-full h-screen relative'>
-      <div className='absolute top-28 left-0 right-0 z-10 flex items-center justify-center'>
-        <HomeInfo />
-      </div>
-
+      <AnimatePresence>
+        {!grabbing && (
+          <motion.div
+            className='absolute top-28 left-0 right-0 z-10 flex items-center justify-center'
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              initial={{ y: "-50px", opacity: 0 }}
+              animate={{ y: "0", opacity: 1 }}
+              exit={{ y: "-50px", opacity: 0 }}
+            >
+              <HomeInfo />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
       <div
         className="w-screen h-screen"
         onMouseDown={handleMouseDown}
