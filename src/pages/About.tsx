@@ -7,8 +7,27 @@ import { experiences, skills } from "../constants";
 
 import "react-vertical-timeline-component/style.min.css";
 import CTA from "../components/CTA";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const About = () => {
+  const [lastIndex, setLastIndex] = useState(1);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setLastIndex(lastIndex => {
+        if (lastIndex < skills.length) {
+          return lastIndex + 1;
+        } else {
+          clearInterval(intervalId);
+          return lastIndex;
+        }
+      });
+    }, 30);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
     <section className='max-container'>
       <h1 className='head-text'>
@@ -31,8 +50,12 @@ const About = () => {
         <h3 className='subhead-text'>My Skills</h3>
 
         <div className='mt-16 flex flex-wrap gap-12'>
-          {skills.map((skill) => (
-            <div className="tooltip tooltip-right" data-tip={skill.name}>
+          {skills.slice(0, lastIndex).map((skill) => (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.1 }}
+              className="tooltip tooltip-right" data-tip={skill.name}>
               <div className='block-container w-20 h-20 cursor-pointer' key={skill.name}>
                 <div className='btn-back rounded-xl' />
                 <div className='btn-front rounded-xl flex justify-center items-center'>
@@ -43,7 +66,7 @@ const About = () => {
                   />
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
