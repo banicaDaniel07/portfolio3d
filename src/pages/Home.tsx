@@ -1,7 +1,8 @@
-import { Suspense, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from 'framer-motion';
 
-// import sakura from '../assets/sakura.mp3';
+// @ts-ignore
+import sakura from '../assets/sakura.mp3';
 import { soundoff, soundon } from "../assets/icons";
 import HomeInfo from "../components/HomeInfo";
 import Spline from "@splinetool/react-spline";
@@ -13,7 +14,7 @@ const Home = () => {
 
   const lightMode = 'https://prod.spline.design/VqE6SZu4SDOg3c-6/scene.splinecode';
   const darkMode = 'https://prod.spline.design/eiqhbn7DxVbIf46H/scene.splinecode';
-  const audioRef = useRef(new Audio(''));
+  const audioRef = useRef(new Audio(sakura));
   audioRef.current.volume = 0.4;
   audioRef.current.loop = true;
 
