@@ -8,7 +8,9 @@ import Spline from "@splinetool/react-spline";
 const Home = () => {
   const [showDarkMode, setShowDarkMode] = useState(false)
   const [isPlayingMusic, setIsPlayingMusic] = useState(false);
-  const lightMode = "https://prod.spline.design/VqE6SZu4SDOg3c-6/scene.splinecode";
+  const [grabbing, setGrabbing] = useState(false);
+
+  const lightMode = 'https://prod.spline.design/VqE6SZu4SDOg3c-6/scene.splinecode';
   const darkMode = 'https://prod.spline.design/eiqhbn7DxVbIf46H/scene.splinecode';
   const audioRef = useRef(new Audio(''));
   audioRef.current.volume = 0.4;
@@ -30,14 +32,29 @@ const Home = () => {
     };
   }, [isPlayingMusic]);
 
+  const handleMouseDown = () => {
+    setGrabbing(true);
+  }
+
+  const handleMouseUp = () => {
+    setGrabbing(false);
+  }
+
   return (
     <section className='w-full h-screen relative'>
       <div className='absolute top-28 left-0 right-0 z-10 flex items-center justify-center'>
         <HomeInfo />
       </div>
 
-      <div className="w-screen h-screen">
-        <Spline scene={showDarkMode ? darkMode : lightMode} />
+      <div
+        className="w-screen h-screen"
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+      >
+        <Spline
+          style={{ cursor: grabbing ? 'grabbing' : 'grab' }}
+          scene={showDarkMode ? darkMode : lightMode}
+        />
       </div>
 
       <div className='absolute bottom-2 left-2'>
