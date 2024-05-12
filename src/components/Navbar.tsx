@@ -8,6 +8,9 @@ const Navbar = () => {
   const [showMenu, setShowMenu] = useState(true);
 
   const handleToggleMenu = () => {
+    if (!showMenu) {
+      document.querySelector('main')?.classList.add('h-screen');
+    }
     setShowMenu(!showMenu);
   }
 
@@ -18,12 +21,24 @@ const Navbar = () => {
 
   return (
     <header className='header'>
+      {showMenu ? (
+        <div
+          onClick={handleToggleMenu}
+          style={{ backgroundColor: 'rgb(0 0 0 / 10%)' }}
+          className="absolute less_than_400:block hidden w-screen h-screen top-0 left-0 bottom-0 right-0"
+        />
+      ) : ''}
       <motion.ul
         variants={variants}
         initial={'hidden'}
         animate={showMenu ? 'visible' : 'hidden'}
         transition={{ duration: 0.1 }}
-        className="shadow-lg less_than_400:block hidden menu bg-gray-100 absolute top-0 left-0 right-0 w-screen z-30 pt-16 pb-3">
+        className="shadow-lg less_than_400:block hidden menu bg-gray-100 absolute top-0 left-0 right-0 w-screen z-30 pt-16 pb-3"
+        style={{
+          backgroundColor: 'rgb(255 255 255 / 60%)',
+          backdropFilter: 'blur(10px)'
+        }}
+      >
         <li className="flex justify-center">
           <NavLink to='/about' className="text-black text-lg w-full flex justify-center">
             About
@@ -48,7 +63,7 @@ const Navbar = () => {
       </nav>
       <nav className="less_than_400:block hidden text-black z-50">
         <label className="btn-circle swap swap-rotate">
-          <input onChange={handleToggleMenu} type="checkbox" />
+          <input checked={showMenu} onChange={handleToggleMenu} type="checkbox" />
           {/* hamburger icon */}
           <svg className="swap-off fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" /></svg>
           {/* close icon */}
