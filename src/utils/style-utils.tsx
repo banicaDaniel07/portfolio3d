@@ -6,6 +6,10 @@ export const removeScrollFromMain = () => {
         mainElement?.classList?.remove('overflow-y-scroll');
         mainElement?.classList?.add('overflow-y-hidden');
     }
+    const headerElement = document.querySelector('header');
+    if (headerElement) {
+        headerElement.style.marginTop = '0';
+    }
 }
 
 export const addScrollToMain = () => {
@@ -13,5 +17,9 @@ export const addScrollToMain = () => {
     if (!_.isNil(mainElement)) {
         mainElement?.classList?.remove('overflow-y-hidden');
         mainElement?.classList?.add('overflow-y-scroll');
+    }
+    const headerElement = document.querySelector('header');
+    if (headerElement) {
+        headerElement.style.marginTop = '20px';
     }
 }
