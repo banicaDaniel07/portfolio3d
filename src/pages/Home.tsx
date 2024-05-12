@@ -46,7 +46,7 @@ const Home = () => {
   }
 
   return (
-    <section className='w-full h-screen relative'>
+    <section className='w-full h-full'>
       <AnimatePresence>
         {!grabbing && (
           <motion.div
