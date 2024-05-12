@@ -105,6 +105,14 @@ body:has(.card[data-color="green"]:hover) {
   z-index: 12;
   right: 0;
   left: 0;
+
+  @media screen and (max-width: 600px) {
+    padding: 1rem 3rem;
+  }
+
+  @media screen and (max-width: 400px) {
+    padding: 1rem 2rem;
+  }
 }
 
 .footer {
