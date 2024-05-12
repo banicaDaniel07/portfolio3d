@@ -54,12 +54,20 @@ const Navbar = () => {
         }}
       >
         <li className="flex justify-center">
-          <NavLink to='/about' className="text-black text-lg w-full flex justify-center">
+          <NavLink
+            onClick={handleToggleMenu}
+            to='/about'
+            className="text-black text-lg w-full flex justify-center"
+          >
             About
           </NavLink>
         </li>
         <li className="flex justify-center">
-          <NavLink to='/projects' className="text-black text-lg w-full flex justify-center">
+          <NavLink
+            onClick={handleToggleMenu}
+            to='/projects'
+            className="text-black text-lg w-full flex justify-center"
+          >
             Projects
           </NavLink>
         </li>
