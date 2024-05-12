@@ -1,16 +1,15 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 import logo from '../assets/images/logo.png'
 import { useState } from "react";
 import { motion } from "framer-motion";
 
 const Navbar = () => {
-  const [showMenu, setShowMenu] = useState(true);
+  const [showMenu, setShowMenu] = useState(false);
+  const location = useLocation();
+  const isHomePath = !location?.pathname?.replace('/', '');
 
   const handleToggleMenu = () => {
-    if (!showMenu) {
-      document.querySelector('main')?.classList.add('h-screen');
-    }
     setShowMenu(!showMenu);
   }
 
@@ -20,12 +19,26 @@ const Navbar = () => {
   };
 
   return (
-    <header className='header'>
+    <header
+      className='header'
+      style={showMenu ? {
+        backgroundColor: 'rgb(255 255 255)',
+      } : isHomePath ? {
+        backgroundColor: 'transparent'
+      } : {
+        backgroundColor: 'rgb(255 255 255 / 60%)',
+        backdropFilter: 'blur(10px)',
+      }}
+    >
       {showMenu ? (
         <div
           onClick={handleToggleMenu}
-          style={{ backgroundColor: 'rgb(0 0 0 / 10%)' }}
-          className="absolute less_than_400:block hidden w-screen h-screen top-0 left-0 bottom-0 right-0"
+          style={{
+            backgroundColor: 'rgb(0 0 0 / 20%)',
+            top: 188,
+            height: 'calc(100vh - 188px)'
+          }}
+          className="absolute less_than_400:block hidden w-screen left-0 bottom-0 right-0"
         />
       ) : ''}
       <motion.ul
@@ -33,10 +46,11 @@ const Navbar = () => {
         initial={'hidden'}
         animate={showMenu ? 'visible' : 'hidden'}
         transition={{ duration: 0.1 }}
-        className="shadow-lg less_than_400:block hidden menu bg-gray-100 absolute top-0 left-0 right-0 w-screen z-30 pt-16 pb-3"
+        className="less_than_400:block hidden menu  absolute left-0 right-0 w-screen z-30 pb-3"
         style={{
-          backgroundColor: 'rgb(255 255 255 / 60%)',
-          backdropFilter: 'blur(10px)'
+          backgroundColor: 'rgb(255 255 255)',
+          backdropFilter: 'blur(10px)',
+          top: 80
         }}
       >
         <li className="flex justify-center">
@@ -50,7 +64,7 @@ const Navbar = () => {
           </NavLink>
         </li>
       </motion.ul>
-      <NavLink to='/'>
+      <NavLink to='/' className="z-50">
         <img src={logo} alt='logo' className='w-12 h-12 object-contain' />
       </NavLink>
       <nav className='less_than_400:hidden flex text-lg gap-7 font-medium'>
