@@ -13,6 +13,10 @@ const Navbar = () => {
     setShowMenu(!showMenu);
   }
 
+  const handleCloseMenu = () => {
+    setShowMenu(false);
+  }
+
   const variants = {
     hidden: { y: '-500px' },
     visible: { y: 0 },
@@ -72,7 +76,11 @@ const Navbar = () => {
           </NavLink>
         </li>
       </motion.ul>
-      <NavLink to='/' className="z-50">
+      <NavLink
+        onClick={handleCloseMenu}
+        to='/'
+        className="z-50"
+      >
         <img src={logo} alt='logo' className='w-12 h-12 object-contain' />
       </NavLink>
       <nav className='less_than_400:hidden flex text-lg gap-7 font-medium'>
