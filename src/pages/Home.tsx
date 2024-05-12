@@ -7,6 +7,7 @@ import soundoff from '../assets/images/soundoff.png'
 import soundon from '../assets/images/soundon.png'
 import HomeInfo from "../components/HomeInfo";
 import Spline from "@splinetool/react-spline";
+import { addScrollToMain, removeScrollFromMain } from "../utils/style-utils";
 
 const Home = () => {
   const [showDarkMode, setShowDarkMode] = useState(false)
@@ -24,6 +25,13 @@ const Home = () => {
       setShowDarkMode(!showDarkMode);
     }, 200)
   }
+
+  useEffect(() => {
+    removeScrollFromMain();
+    return () => {
+      addScrollToMain();
+    };
+  }, [])
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -48,20 +56,20 @@ const Home = () => {
   return (
     <section className='w-full h-full'>
       <AnimatePresence>
+        <motion.div
+          className='absolute top-28 left-0 right-0 z-10 flex items-center justify-center'
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
           <motion.div
-            className='absolute top-28 left-0 right-0 z-10 flex items-center justify-center'
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            initial={{ y: "-50px", opacity: 0 }}
+            animate={{ y: "0", opacity: 1 }}
+            exit={{ y: "-50px", opacity: 0 }}
           >
-            <motion.div
-              initial={{ y: "-50px", opacity: 0 }}
-              animate={{ y: "0", opacity: 1 }}
-              exit={{ y: "-50px", opacity: 0 }}
-            >
-              <HomeInfo />
-            </motion.div>
+            <HomeInfo />
           </motion.div>
+        </motion.div>
       </AnimatePresence>
       <div
         className="w-screen h-screen"
