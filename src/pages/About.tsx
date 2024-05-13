@@ -41,8 +41,9 @@ const About = () => {
 
       <div className='mt-5 flex flex-col gap-3 text-slate-500'>
         <p>
-          Software Engineer based in Romania, specializing in technical
-          education through hands-on learning and building applications.
+          Software Engineer based in Romania, specializing in full-stack development to
+          design, develop, and deploy end-to-end web applications, combining expertise in
+          both front-end and backend technologies.
         </p>
       </div>
 
@@ -75,8 +76,10 @@ const About = () => {
         <h3 className='subhead-text'>Work Experience.</h3>
         <div className='mt-5 flex flex-col gap-3 text-slate-500'>
           <p>
-            I've worked with all sorts of companies, leveling up my skills and
-            teaming up with smart people. Here's the rundown:
+            Seasoned professional with a diverse background, continuously enhancing
+            skills and collaborating with talented peers. Currently driving innovation
+            and excellence in my current role, where I thrive on challenges and teamwork
+            to deliver outstanding results.
           </p>
         </div>
 
