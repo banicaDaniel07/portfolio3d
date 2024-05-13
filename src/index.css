@@ -96,7 +96,7 @@ body:has(.card[data-color="green"]:hover) {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 4rem;
-  max-width: 64rem;
+  max-width: 68rem;
   margin-left: auto;
   margin-right: auto;
   position: absolute;
@@ -114,6 +114,11 @@ body:has(.card[data-color="green"]:hover) {
 
   @media screen and (max-width: 400px) {
     padding: 1rem 2rem;
+  }
+
+  @media screen and (max-width: 1060px) {
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
 }
 

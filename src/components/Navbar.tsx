@@ -37,12 +37,7 @@ const Navbar = () => {
       {showMenu ? (
         <div
           onClick={handleToggleMenu}
-          style={{
-            backgroundColor: 'rgb(0 0 0 / 20%)',
-            top: 188,
-            height: 'calc(100vh - 188px)'
-          }}
-          className="absolute less_than_400:block hidden w-screen left-0 bottom-0 right-0"
+          className="fixed less-than-400:block hidden w-full h-full left-0 bottom-0 right-0 top-0"
         />
       ) : ''}
       <motion.ul
@@ -50,11 +45,9 @@ const Navbar = () => {
         initial={'hidden'}
         animate={showMenu ? 'visible' : 'hidden'}
         transition={{ duration: 0.1 }}
-        className="less_than_400:block hidden menu  absolute left-0 right-0 w-screen z-30 pb-3"
+        className="bg-white calc-100vw-minus-2rem less-than-400:block hidden menu fixed left-0 right-0 pb-30 pb-3 ml-4 mr-4 rounded-xl top-20"
         style={{
-          backgroundColor: 'rgb(255 255 255)',
           backdropFilter: 'blur(10px)',
-          top: 80
         }}
       >
         <li className="flex justify-center">
@@ -83,7 +76,7 @@ const Navbar = () => {
       >
         <img src={logo} alt='logo' className='w-12 h-12 object-contain' />
       </NavLink>
-      <nav className='less_than_400:hidden flex text-lg gap-7 font-medium'>
+      <nav className='less-than-400:hidden flex text-lg gap-7 font-medium'>
         <NavLink to='/about' className={({ isActive }) => isActive ? "text-blue-600" : "text-black"}>
           About
         </NavLink>
@@ -91,7 +84,7 @@ const Navbar = () => {
           Projects
         </NavLink>
       </nav>
-      <nav className="less_than_400:block hidden text-black z-50">
+      <nav className="less-than-400:block hidden text-black z-50">
         <label className="btn-circle swap swap-rotate">
           <input checked={showMenu} onChange={handleToggleMenu} type="checkbox" />
           {/* hamburger icon */}

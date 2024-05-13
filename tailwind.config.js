@@ -4,8 +4,12 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        'less_than_350': { 'max': '350px' },
-        'less_than_400': { 'max': '400px' },
+        'less-than-350': { 'max': '350px' },
+        'less-than-400': { 'max': '400px' },
+        'less_than_1060': { 'max': '1060px' },
+      },
+      width: {
+        'calc-100vw-minus-2rem': 'calc(100vw - 2rem)',
       },
     },
   },
