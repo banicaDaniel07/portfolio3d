@@ -14,10 +14,13 @@ const Projects = () => {
       </h1>
 
       <p className='text-slate-500 mt-2 leading-relaxed'>
-        I've embarked on numerous projects throughout the years, but these are
-        the ones I hold closest to my heart. Many of them are open-source, so if
-        you come across something that piques your interest, feel free to
-        explore the codebase and contribute your ideas for further enhancements.
+        Throughout my professional journey, I've undertaken a diverse array of projects,
+        each presenting unique challenges and opportunities for growth.
+        From pioneering initiatives with startups to contributing innovative
+        solutions within my current role, I've honed my skills and expertise across
+        various domains. My commitment to excellence and passion for innovation drive
+        me to consistently deliver impactful results, making meaningful contributions to
+        every project I undertake.
         Your collaboration is highly valued!
       </p>
 
