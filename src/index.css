@@ -296,3 +296,30 @@ body:has(.card[data-color="green"]:hover) {
   box-shadow: 0.6vmin 0.6vmin #fff, 1vmin 1vmin #d2e4ff, 1vmin 1vmin #d2e4ff,
     0.65vmin 1vmin #d2e4ff, 1vmin 0.65vmin #d2e4ff;
 }
+
+.container {
+  position: relative;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  /* grid-template-columns: 2fr 1fr 2fr; */
+  /* grid-template-rows: repeat(2, 1fr); */
+  list-style: none;
+}
+
+.kid1 {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.kid2 {
+  grid-area: 1 / 2 / 2 / 4;
+}
+
+.kid3 {
+  grid-area: 2 / 1 / 3 / 3;
+}
+
+.kid4 {
+  grid-area: 2 / 3 / 3 / 4;
+}

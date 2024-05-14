@@ -234,10 +234,27 @@ export const socialLinks = [
 
 export const projects = [
     {
-        iconUrl: react,
-        theme: 'btn-back-red',
-        name: 'Amazon Price Tracker',
-        description: 'Developed a web application that tracks and notifies users of price changes for products on Amazon, helping users find the best deals.',
-        link: '',
+        id: '1',
+        subtitle: 'Hello',
+        title: 'Amazon Price Tracker',
+    },
+    {
+        id: '2',
+        subtitle: 'Ce mai faci',
+        title: 'Amazon Price Tracker',
+    },
+    {
+        id: '3',
+        subtitle: 'Am adus suc',
+        title: 'Amazon Price Tracker',
+    },
+    {
+        id: '4',
+        subtitle: 'Cat e ceasul?',
+        title: 'Amazon Price Tracker',
     },
 ];
+// iconUrl: react,
+// theme: 'btn-back-red',
+// description: 'Developed a web application that tracks and notifies users of price changes for products on Amazon, helping users find the best deals.',
+// link: '',

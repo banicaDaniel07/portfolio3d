@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
-
 import { projects } from "../constants";
 import CTA from "../components/CTA";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
 
 const Projects = () => {
+  const [selectedId, setSelectedId] = useState<any>(null)
+
   return (
     <section className='max-container'>
       <h1 className='head-text'>
@@ -24,43 +26,92 @@ const Projects = () => {
         Your collaboration is highly valued!
       </p>
 
-      <div className='flex flex-wrap my-20 gap-16'>
-        {projects.map((project) => (
-          <div className='lg:w-[400px] w-full' key={project.name}>
-            <div className='block-container w-12 h-12'>
-              <div className={`btn-back rounded-xl ${project.theme}`} />
-              <div className='btn-front rounded-xl flex justify-center items-center'>
-                <img
-                  src={project.iconUrl}
-                  alt='threads'
-                  className='w-1/2 h-1/2 object-contain'
-                />
-              </div>
-            </div>
-
-            <div className='mt-5 flex flex-col'>
-              <h4 className='text-2xl font-poppins font-semibold'>
-                {project.name}
-              </h4>
-              <p className='mt-2 text-slate-500'>{project.description}</p>
-              <div className='mt-5 flex items-center gap-2 font-poppins'>
-                <Link
-                  to={project.link}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='font-semibold text-blue-600'
+      <div style={{
+        position: 'relative'
+      }}>
+        <div className="container grid-cols-2fr-1fr-2fr" style={{
+          borderRadius: 12,
+          gridGap: '1.5rem',
+          padding: '3rem',
+          background: 'linear-gradient(135deg,#b1f,#a0f)',
+        }}>
+          {projects.map((item) => (
+            <motion.div
+              className={' kid' + item.id}
+              style={{
+                height: 200,
+                willChange: 'transform',
+                background: '#fff',
+                display: 'flex',
+                flexDirection: 'column',
+                borderRadius: 12,
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: '0 2px 3px 0 rgba(0, 0, 0, .1), 0 10px min(calc(1rem*(15 /(18 + .167* 2)))), 15px) 0 rgba(0, 0, 0, .06)'
+              }}
+              key={item.id}
+              layoutId={item.id}
+              onClick={() => setSelectedId(item.id)}
+            >
+              <motion.h5>{item.subtitle}</motion.h5>
+              <motion.h2>{item.title}</motion.h2>
+            </motion.div>
+          ))}
+        </div>
+        <AnimatePresence>
+          {selectedId && (
+            <>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.8 }}
+                exit={{ opacity: 0, transition: { duration: 0.2 } }}
+                style={{
+                  position: 'absolute',
+                  width: '100%',
+                  height: '100%',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  background: 'linear-gradient(135deg,#b1f,#a0f)'
+                }}
+              >
+              </motion.div>
+              <div style={{
+                position: 'absolute',
+                display: 'flex',
+                alignItems: 'center',
+                width: '100%',
+                height: '100%',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                justifyContent: 'center',
+                background: 'transparent',
+                boxShadow: '0 2px 3px 0 rgba(0, 0, 0, .1), 0 10px min(calc(1rem* 15), 15px) 0 rgba(0, 0, 0, .06)'
+              }}>
+                <motion.div
+                  layoutId={selectedId}
+                  style={{
+                    backgroundColor: '#fff',
+                    width: 650,
+                    height: 350,
+                    borderRadius: 12,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
                 >
-                  Live Link
-                </Link>
-                <img
-                  // src={arrow}
-                  alt='arrow'
-                  className='w-4 h-4 object-contain'
-                />
+                  <motion.h5>{projects.find((item) => item.id === selectedId)?.subtitle}</motion.h5>
+                  <motion.h2>{projects.find((item) => item.id === selectedId)?.title}</motion.h2>
+                  <motion.button onClick={() => setSelectedId(null)}>Close</motion.button>
+                </motion.div>
               </div>
-            </div>
-          </div>
-        ))}
+            </>
+          )}
+        </AnimatePresence>
       </div>
 
       <hr className='border-slate-200' />
