@@ -85,7 +85,7 @@ body:has(.card[data-color="green"]:hover) {
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
-.btn {
+/* .btn {
   color: #ffffff;
   background-image: linear-gradient(to right, #00c6ff, #0072ff);
   outline: none;
@@ -95,7 +95,7 @@ body:has(.card[data-color="green"]:hover) {
   width: 100%;
   padding: 0.625rem;
   text-align: center;
-}
+} */
 
 .header {
   display: flex;
@@ -318,3 +318,66 @@ body:has(.card[data-color="green"]:hover) {
 .project-4 {
   grid-area: 2 / 3 / 3 / 4;
 }
+
+.grid_container {
+  margin: 10px;
+  height: calc(100% - 20px);
+  width: calc(100% - 20px);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 10px 10px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "title title title title title title title title title close"
+    "mobile mobile mobile image image image image image image image"
+    "mobile mobile mobile image image image image image image image"
+    "mobile mobile mobile image image image image image image image"
+    "mobile mobile mobile image image image image image image image"
+    "mobile mobile mobile image image image image image image image"
+    "mobile mobile mobile image image image image image image image"
+    "mobile mobile mobile social description description description description description description"
+    "view view owner owner description description description description description description"
+    "view view owner owner description description description description description description";
+}
+
+.close {
+  grid-area: close;
+}
+
+.title {
+  grid-area: title;
+}
+
+.image {
+  grid-area: image;
+}
+
+.mobile {
+  grid-area: mobile;
+}
+
+.description {
+  grid-area: description;
+}
+
+.view {
+  grid-area: view;
+}
+
+.social {
+  grid-area: social;
+}
+
+.owner {
+  grid-area: owner;
+}
+
+.box {
+  background-color: #fff;
+  border-radius: 16px;
+}
+
+/* .box:hover {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+} */

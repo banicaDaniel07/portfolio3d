@@ -1,4 +1,4 @@
-import { projects } from "../constants";
+import { IProject, projects } from "../constants";
 import CTA from "../components/CTA";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
@@ -10,12 +10,14 @@ import 'swiper/css/scrollbar';
 import 'swiper/css/effect-coverflow';
 import SwiperCore from 'swiper';
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay, EffectCoverflow } from 'swiper/modules';
+import application from '../assets/images/application.png'
+import linkedin from '../assets/icons/linkedin.svg';
 
 // Install Swiper modules
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay, EffectCoverflow]);
 
 const Projects = () => {
-  const [selectedId, setSelectedId] = useState<any>(null);
+  const [selectedItem, setSelectedItem] = useState<IProject | null>(null);
 
   return (
     <section className='max-container'>
@@ -54,7 +56,7 @@ const Projects = () => {
               slideShadows: false,
             }}
             loop
-            autoplay={{ delay: 3000 }}
+            // autoplay={{ delay: 3000 }}
             slidesPerView={2}
             className="m-0 w-full grid relative gap-6 px-12 py-16 my-10 p-4"
             style={{
@@ -68,20 +70,20 @@ const Projects = () => {
                   className='bg-center bg-no-repeat bg-cover rounded-lg will-change-transform bg-slate-500 flex flex-col items-center justify-center cursor-pointer h-full my-10'
                   style={{
                     boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',
-                    backgroundImage: `url(${item.image})`,
+                    backgroundImage: `url(${item.tumbnail})`,
                     width: 450,
                     height: 300,
                   }}
                   whileHover={{ boxShadow: 'rgba(100, 100, 111, 0.5) 0px 7px 29px 0px' }}
                   layoutId={item.id}
-                  onClick={() => setSelectedId(item.id)}
+                  onClick={() => setSelectedItem(item)}
                 >
                 </motion.div>
               </SwiperSlide>
             ))}
           </Swiper>
           <AnimatePresence>
-            {selectedId && (
+            {selectedItem?.id && (
               <>
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -91,20 +93,68 @@ const Projects = () => {
                   style={{
                     backgroundColor: '#f5f7f999'
                   }}
-                  onClick={() => setSelectedId(null)}
                 />
                 <div className='fixed flex items-center justify-center inset-0 z-30'>
                   <motion.div
-                    layoutId={selectedId}
-                    className='bg-white rounded-xl flex flex-col justify-center items-center cursor-pointer shadow-lg'
+                    layoutId={selectedItem?.id}
+                    className=' relative rounded-xl flex flex-col justify-center items-center cursor-pointer shadow-lg text-4xl'
                     style={{
+                      backgroundColor: '#d2d2d2',
                       width: 900,
                       height: 600,
                     }}
                   >
-                    <motion.h5>{projects.find((item) => item.id === selectedId)?.subtitle}</motion.h5>
-                    <motion.h2>{projects.find((item) => item.id === selectedId)?.title}</motion.h2>
-                    <motion.button onClick={() => setSelectedId(null)}>Close</motion.button>
+                    <div className='grid_container'>
+                      <div className="box title flex items-center justify-center">
+                        {selectedItem?.title}
+                      </div>
+                      <div className="box close">
+                        <button
+                          className="btn btn-square btn-outline btn-error rounded-2xl h-full w-full"
+                          onClick={() => setSelectedItem(null)}
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                        </button>
+                      </div>
+                      <div
+                        className="box mobile bg-center bg-no-repeat bg-contain"
+                        style={{
+                          backgroundImage: `url(${selectedItem.mobile})`,
+                        }}
+                      />
+                      <div
+                        className="box image bg-center bg-no-repeat bg-contain"
+                        style={{
+                          backgroundImage: `url(${selectedItem.desktop})`,
+                        }}
+                      />
+                      <div className="box view">
+                        <a href={selectedItem.website} target='_blank'>
+                          <button className="btn btn-outline btn-success rounded-2xl h-full w-full">
+                            Open Website
+                            <img src={application} />
+                          </button>
+                        </a>
+                      </div>
+                      <div className="box social">
+                        <button
+                          className="btn btn-square btn-outline rounded-2xl h-full w-full"
+                        >
+                          <img src={linkedin} />
+                        </button>
+                      </div>
+                      <div className="box owner flex justify-center items-center">
+                        <span className='text-sm uppercase px-2 text-center'>
+                          {selectedItem?.owner}
+                        </span>
+                      </div>
+                      <div className="box description flex justify-center items-center">
+                        <span className="text-sm text-center p-1 uppercase">
+                          {selectedItem?.description}
+                        </span>
+                      </div>
+                    </div>
+
                   </motion.div>
                 </div>
               </>

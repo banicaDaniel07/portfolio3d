@@ -33,10 +33,6 @@ import postman from '../assets/icons/postman.svg';
 import npm from '../assets/icons/npm.svg';
 import flask from '../assets/icons/flask.svg';
 import figma from '../assets/icons/figma.svg';
-import portfolio from '../assets/images/portfolio.png';
-import orarooWeb from '../assets/images/oraroo_web.png';
-import fin from '../assets/images/fin.png'
-import panni from '../assets/images/panni.png'
 
 export const skills = [
     {
@@ -236,30 +232,84 @@ export const socialLinks = [
     }
 ];
 
-export const projects = [
+export interface IProject {
+    id: string;
+    title: string;
+    mobile: string;
+    tumbnail: string;
+    desktop: string;
+    website: string;
+    social: string;
+    owner: string;
+    description: string;
+}
+
+export const projects: IProject[] = [
     {
         id: '1',
-        image: orarooWeb,
-        subtitle: 'Hello',
-        title: 'Amazon Price Tracker',
+        title: 'Oraroo',
+        tumbnail: 'https://i.ibb.co/qgCqw4C/oraroo-web.png',
+        mobile: 'https://i.ibb.co/RHqzj6K/oraroo-mobile.png',
+        desktop: 'https://i.ibb.co/s1Z4D95/oraroo-desktop.png',
+        website: 'https://www.oraroo.eu',
+        social: 'https://www.linkedin.com/company/oraroo/posts/?feedView=all',
+        owner: 'joined the team and contributed to the application',
+        description: `Oraroo is a comprehensive platform designed to streamline and 
+        automate HR and project management processes for companies. 
+        It offers solutions for employee time tracking, project billing, 
+        and workforce management, allowing businesses to optimize efficiency 
+        and improve employee satisfaction. The platform provides features like 
+        flexible scheduling, expense approvals, and integration with payroll systems, 
+        making it easier for companies to manage their operations and enhance productivity.`
     },
     {
         id: '2',
-        image: fin,
-        subtitle: 'Ce mai faci',
-        title: 'Amazon Price Tracker',
+        title: 'Finalitico',
+        tumbnail: 'https://i.ibb.co/1rWLWGX/fin.png',
+        mobile: 'https://i.ibb.co/5TX4yg9/fin-mobile.png',
+        desktop: 'https://i.ibb.co/BTQDHS0/fin-desktop.png',
+        website: 'https://www.finalitico.eu',
+        social: '',
+        owner: 'Developed the POC version of the application',
+        description: `Finalitico is a financial management platform designed for 
+        entrepreneurs and small to medium-sized businesses (SMEs). 
+        The website offers advanced financial analysis tools that simplify 
+        financial management and decision-making. It provides features like 
+        detailed balance sheets and cash flow forecasts, aiming to make financial 
+        data clear and actionable. The platform is built to support business growth 
+        by providing intuitive and up-to-date technology that enhances financial 
+        visibility and control.`
     },
     {
         id: '3',
-        image: panni,
-        subtitle: 'Am adus suc',
-        title: 'Amazon Price Tracker',
+        title: 'PanniBakery',
+        tumbnail: 'https://i.ibb.co/D91BLTx/panni.png',
+        mobile: 'https://i.ibb.co/RNDHrQZ/panni-mobile.png',
+        desktop: 'https://i.ibb.co/xH5tpFt/panni-desktop.png',
+        website: 'https://pannibakery.md',
+        social: 'https://www.instagram.com/pannibakery_md',
+        owner: 'Build from scratch: simple, fast, and mobile-friendly',
+        description: `Panni Bakery is an artisan bakery in Moldova that offers a 
+        variety of freshly baked goods. Their products include traditional bread, 
+        pastries, and cakes, all made with high-quality ingredients. The bakery emphasizes 
+        handmade techniques and authentic recipes to ensure a rich and delicious taste. 
+        Panni Bakery also provides custom cake orders for special occasions.`,
     },
     {
         id: '4',
-        image: portfolio,
-        subtitle: 'Cat e ceasul?',
-        title: 'Amazon Price Tracker',
+        title: 'Old Portfolio',
+        tumbnail: 'https://i.ibb.co/W5nGHjs/portfolio.png',
+        mobile: 'https://i.ibb.co/sRwqKHp/portfolio-mobile.png',
+        desktop: 'https://i.ibb.co/m67SpWV/portfolio-desktop.png',
+        website: 'https://banica-daniel.netlify.app',
+        social: '',
+        owner: 'old presentation website',
+        description: `This website showcases my first portfolio, 
+        created before I got a job. It includes mini projects 
+        I built on my road to learning web development, highlighting my 
+        skills, projects, and experience. The site features my resume, 
+        project samples, and contact information, providing a comprehensive 
+        view of my expertise and accomplishments.`,
     },
 ];
 // iconUrl: react,
