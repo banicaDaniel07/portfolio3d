@@ -37,73 +37,79 @@ const Projects = () => {
         Your collaboration is highly valued!
       </p>
 
-      <div>
-        <Swiper
-          effect="coverflow" // Set the effect to coverflow
-          grabCursor={true} // Enable grab cursor
-          centeredSlides={true} // Center the active slide
-          coverflowEffect={{
-            slideShadows: false, // Enable slide shadows
-          }}
-          loop
-          // autoplay={{ delay: 3000 }}
-          slidesPerView={2}
-          className="m-0 w-full grid relative gap-6 px-12 py-16 my-10 p-4"
-          style={{
-            backgroundColor: '#F5F7F9',
-            height: 380
-          }}
+      <div className='overflow-hidden'>
+        <motion.div
+          initial={{ y: '100%', scale: 0 }}
+          animate={{ y: 0, scale: 1 }}
+          transition={{ duration: 0.2 }}
         >
-          {projects.map((item) => (
-            <SwiperSlide className='h-full'            >
-              <motion.div
-                className='bg-center bg-no-repeat bg-cover rounded-lg will-change-transform bg-slate-500 flex flex-col items-center justify-center cursor-pointer h-full my-10'
-                style={{
-                  boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',
-                  backgroundImage: `url(${item.image})`,
-                  width: 450,
-                  height: 300,
-                }}
-                whileHover={{ boxShadow: 'rgba(100, 100, 111, 0.5) 0px 7px 29px 0px' }}
-                key={item.id}
-                layoutId={item.id}
-                onClick={() => setSelectedId(item.id)}
-              >
-              </motion.div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-        <AnimatePresence>
-          {selectedId && (
-            <>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.8 }}
-                exit={{ opacity: 0, transition: { duration: 0.2 } }}
-                className='absolute w-full h-full top-0 left-0 right-0 bottom-0 rounded-xl z-20'
-                style={{
-                  backgroundColor: '#f5f7f999'
-                }}
-              />
-              <div
-                className='absolute flex items-center justify-center w-full h-full top-0 left-0 right-0 bottom-0 bg-transparent z-30'
-              >
+          <Swiper
+            effect="coverflow" // Set the effect to coverflow
+            grabCursor={true} // Enable grab cursor
+            centeredSlides={true} // Center the active slide
+            coverflowEffect={{
+              slideShadows: false, // Enable slide shadows
+            }}
+            loop
+            autoplay={{ delay: 3000 }}
+            slidesPerView={2}
+            className="m-0 w-full grid relative gap-6 px-12 py-16 my-10 p-4"
+            style={{
+              backgroundColor: '#F5F7F9',
+              height: 380
+            }}
+          >
+            {projects.map((item) => (
+              <SwiperSlide className='h-full'            >
                 <motion.div
-                  layoutId={selectedId}
-                  className='bg-white rounded-xl flex flex-col justify-center items-center cursor-pointer shadow-lg'
+                  className='bg-center bg-no-repeat bg-cover rounded-lg will-change-transform bg-slate-500 flex flex-col items-center justify-center cursor-pointer h-full my-10'
                   style={{
-                    width: 900,
-                    height: 600,
+                    boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',
+                    backgroundImage: `url(${item.image})`,
+                    width: 450,
+                    height: 300,
                   }}
+                  whileHover={{ boxShadow: 'rgba(100, 100, 111, 0.5) 0px 7px 29px 0px' }}
+                  key={item.id}
+                  layoutId={item.id}
+                  onClick={() => setSelectedId(item.id)}
                 >
-                  <motion.h5>{projects.find((item) => item.id === selectedId)?.subtitle}</motion.h5>
-                  <motion.h2>{projects.find((item) => item.id === selectedId)?.title}</motion.h2>
-                  <motion.button onClick={() => setSelectedId(null)}>Close</motion.button>
                 </motion.div>
-              </div>
-            </>
-          )}
-        </AnimatePresence>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <AnimatePresence>
+            {selectedId && (
+              <>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 0.8 }}
+                  exit={{ opacity: 0, transition: { duration: 0.2 } }}
+                  className='absolute w-full h-full top-0 left-0 right-0 bottom-0 rounded-xl z-20'
+                  style={{
+                    backgroundColor: '#f5f7f999'
+                  }}
+                />
+                <div
+                  className='absolute flex items-center justify-center w-full h-full top-0 left-0 right-0 bottom-0 bg-transparent z-30'
+                >
+                  <motion.div
+                    layoutId={selectedId}
+                    className='bg-white rounded-xl flex flex-col justify-center items-center cursor-pointer shadow-lg'
+                    style={{
+                      width: 900,
+                      height: 600,
+                    }}
+                  >
+                    <motion.h5>{projects.find((item) => item.id === selectedId)?.subtitle}</motion.h5>
+                    <motion.h2>{projects.find((item) => item.id === selectedId)?.title}</motion.h2>
+                    <motion.button onClick={() => setSelectedId(null)}>Close</motion.button>
+                  </motion.div>
+                </div>
+              </>
+            )}
+          </AnimatePresence>
+        </motion.div>
       </div>
 
       <hr className='border-slate-200' />
