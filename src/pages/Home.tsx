@@ -78,10 +78,10 @@ const Home = () => {
         onTouchStart={handleMouseDown}
         onTouchEnd={handleMouseUp}
       >
-        <Spline
+        {/* <Spline
           style={{ cursor: grabbing ? 'grabbing' : 'grab' }}
           scene={showDarkMode ? darkMode : lightMode}
-        />
+        /> */}
       </div>
 
       <div className='absolute bottom-2 left-2'>

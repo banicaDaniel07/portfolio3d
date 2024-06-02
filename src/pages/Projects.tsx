@@ -15,7 +15,7 @@ import { Navigation, Pagination, Scrollbar, A11y, Autoplay, EffectCoverflow } fr
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay, EffectCoverflow]);
 
 const Projects = () => {
-  const [selectedId, setSelectedId] = useState<any>(null)
+  const [selectedId, setSelectedId] = useState<any>(null);
 
   return (
     <section className='max-container'>
@@ -39,16 +39,19 @@ const Projects = () => {
 
       <div className='overflow-hidden'>
         <motion.div
-          initial={{ y: '100%', scale: 0 }}
-          animate={{ y: 0, scale: 1 }}
+          initial={{ translateY: 380, scale: 0 }}
+          animate={{ translateY: 0, scale: 1 }}
           transition={{ duration: 0.2 }}
+          style={{
+            position: 'relative'
+          }}
         >
           <Swiper
-            effect="coverflow" // Set the effect to coverflow
-            grabCursor={true} // Enable grab cursor
-            centeredSlides={true} // Center the active slide
+            effect="coverflow"
+            grabCursor={true}
+            centeredSlides={true}
             coverflowEffect={{
-              slideShadows: false, // Enable slide shadows
+              slideShadows: false,
             }}
             loop
             autoplay={{ delay: 3000 }}
@@ -60,7 +63,7 @@ const Projects = () => {
             }}
           >
             {projects.map((item) => (
-              <SwiperSlide className='h-full'            >
+              <SwiperSlide key={item.id} className='h-full'>
                 <motion.div
                   className='bg-center bg-no-repeat bg-cover rounded-lg will-change-transform bg-slate-500 flex flex-col items-center justify-center cursor-pointer h-full my-10'
                   style={{
@@ -70,7 +73,6 @@ const Projects = () => {
                     height: 300,
                   }}
                   whileHover={{ boxShadow: 'rgba(100, 100, 111, 0.5) 0px 7px 29px 0px' }}
-                  key={item.id}
                   layoutId={item.id}
                   onClick={() => setSelectedId(item.id)}
                 >
@@ -85,14 +87,13 @@ const Projects = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 0.8 }}
                   exit={{ opacity: 0, transition: { duration: 0.2 } }}
-                  className='absolute w-full h-full top-0 left-0 right-0 bottom-0 rounded-xl z-20'
+                  className='fixed inset-0 z-20'
                   style={{
                     backgroundColor: '#f5f7f999'
                   }}
+                  onClick={() => setSelectedId(null)}
                 />
-                <div
-                  className='absolute flex items-center justify-center w-full h-full top-0 left-0 right-0 bottom-0 bg-transparent z-30'
-                >
+                <div className='fixed flex items-center justify-center inset-0 z-30'>
                   <motion.div
                     layoutId={selectedId}
                     className='bg-white rounded-xl flex flex-col justify-center items-center cursor-pointer shadow-lg'
