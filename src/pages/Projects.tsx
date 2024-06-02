@@ -2,6 +2,17 @@ import { projects } from "../constants";
 import CTA from "../components/CTA";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import 'swiper/css/effect-coverflow';
+import SwiperCore from 'swiper';
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay, EffectCoverflow } from 'swiper/modules';
+
+// Install Swiper modules
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay, EffectCoverflow]);
 
 const Projects = () => {
   const [selectedId, setSelectedId] = useState<any>(null)
@@ -26,29 +37,42 @@ const Projects = () => {
         Your collaboration is highly valued!
       </p>
 
-      <div className="relative"
-      >
-        <div
-          className="grid-cols-2fr-1fr-2fr m-0 h-full w-full grid relative gap-6 px-12 py-16 rounded-xl my-10"
+      <div>
+        <Swiper
+          effect="coverflow" // Set the effect to coverflow
+          grabCursor={true} // Enable grab cursor
+          centeredSlides={true} // Center the active slide
+          coverflowEffect={{
+            slideShadows: false, // Enable slide shadows
+          }}
+          loop
+          // autoplay={{ delay: 3000 }}
+          slidesPerView={2}
+          className="m-0 w-full grid relative gap-6 px-12 py-16 my-10 p-4"
           style={{
-            background: 'linear-gradient(135deg,#b1f,#a0f)',
+            backgroundColor: '#F5F7F9',
+            height: 380
           }}
         >
           {projects.map((item) => (
-            <motion.div
-              className={`project-${item.id} h-48 will-change-transform bg-white flex flex-col rounded-xl items-center justify-center`}
-              style={{
-                boxShadow: '0 2px 3px 0 rgba(0, 0, 0, .1), 0 10px min(calc(1rem*(15 /(18 + .167* 2)))), 15px) 0 rgba(0, 0, 0, .06)'
-              }}
-              key={item.id}
-              layoutId={item.id}
-              onClick={() => setSelectedId(item.id)}
-            >
-              <motion.h5>{item.subtitle}</motion.h5>
-              <motion.h2>{item.title}</motion.h2>
-            </motion.div>
+            <SwiperSlide className='h-full'            >
+              <motion.div
+                className='bg-center bg-no-repeat bg-cover rounded-lg will-change-transform bg-slate-500 flex flex-col items-center justify-center cursor-pointer h-full my-10'
+                style={{
+                  boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',
+                  backgroundImage: `url(${item.image})`,
+                  width: 450,
+                  height: 300,
+                }}
+                whileHover={{ boxShadow: 'rgba(100, 100, 111, 0.5) 0px 7px 29px 0px' }}
+                key={item.id}
+                layoutId={item.id}
+                onClick={() => setSelectedId(item.id)}
+              >
+              </motion.div>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
         <AnimatePresence>
           {selectedId && (
             <>
@@ -56,22 +80,20 @@ const Projects = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 0.8 }}
                 exit={{ opacity: 0, transition: { duration: 0.2 } }}
-                className='absolute w-full h-full top-0 left-0 right-0 bottom-0 rounded-xl'
+                className='absolute w-full h-full top-0 left-0 right-0 bottom-0 rounded-xl z-20'
                 style={{
-                  background: 'linear-gradient(135deg,#b1f,#a0f)'
+                  backgroundColor: '#f5f7f999'
                 }}
               />
               <div
-                className='absolute flex items-center justify-center w-full h-full top-0 left-0 right-0 bottom-0 bg-transparent'
-                style={{
-                  boxShadow: '0 2px 3px 0 rgba(0, 0, 0, .1), 0 10px min(calc(1rem* 15), 15px) 0 rgba(0, 0, 0, .06)'
-                }}>
+                className='absolute flex items-center justify-center w-full h-full top-0 left-0 right-0 bottom-0 bg-transparent z-30'
+              >
                 <motion.div
                   layoutId={selectedId}
-                  className='bg-white rounded-xl flex flex-col justify-center items-center cursor-pointer'
+                  className='bg-white rounded-xl flex flex-col justify-center items-center cursor-pointer shadow-lg'
                   style={{
-                    width: 650,
-                    height: 350,
+                    width: 900,
+                    height: 600,
                   }}
                 >
                   <motion.h5>{projects.find((item) => item.id === selectedId)?.subtitle}</motion.h5>

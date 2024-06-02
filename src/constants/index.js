@@ -33,6 +33,10 @@ import postman from '../assets/icons/postman.svg';
 import npm from '../assets/icons/npm.svg';
 import flask from '../assets/icons/flask.svg';
 import figma from '../assets/icons/figma.svg';
+import portfolio from '../assets/images/portfolio.png';
+import orarooWeb from '../assets/images/oraroo_web.png';
+import fin from '../assets/images/fin.png'
+import panni from '../assets/images/panni.png'
 
 export const skills = [
     {
@@ -235,21 +239,25 @@ export const socialLinks = [
 export const projects = [
     {
         id: '1',
+        image: orarooWeb,
         subtitle: 'Hello',
         title: 'Amazon Price Tracker',
     },
     {
         id: '2',
+        image: fin,
         subtitle: 'Ce mai faci',
         title: 'Amazon Price Tracker',
     },
     {
         id: '3',
+        image: panni,
         subtitle: 'Am adus suc',
         title: 'Amazon Price Tracker',
     },
     {
         id: '4',
+        image: portfolio,
         subtitle: 'Cat e ceasul?',
         title: 'Amazon Price Tracker',
     },

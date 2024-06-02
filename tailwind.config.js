@@ -11,6 +11,9 @@ module.exports = {
       width: {
         'calc-100vw-minus-2rem': 'calc(100vw - 2rem)',
       },
+      blur: {
+        '1px': '1px'
+      }
     },
   },
   plugins: [
