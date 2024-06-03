@@ -118,11 +118,16 @@ const About = () => {
                   </p>
                 </div>
 
-                <ul className='my-5 list-disc ml-5 space-y-2'>
-                  {experience.points.map((point, index) => (
+                <ul className='my-5 ml-5 mt-1'>
+                  {experience.points.map((point, index) => point.includes('Title: ') ? (
+                    <li className='text-black-500/50 font-semibold mt-2'>
+                      {point.replace('Title: ', '')}
+                    </li>
+                  ) : (
                     <li
                       key={`experience-point-${index}`}
-                      className='text-black-500/50 font-normal pl-1 text-sm'
+                      className='text-black-500/50 font-normal text-sm list-disc my-1'
+                      style={{ marginTop: '0 !important' }}
                     >
                       {point}
                     </li>

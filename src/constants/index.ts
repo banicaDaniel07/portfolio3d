@@ -206,10 +206,47 @@ export const experiences = [
         iconBg: "#cef2db",
         date: "August 2021 - Present",
         points: [
-            "Developing and maintaining web applications using React.js and other related technologies.",
-            "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-            "Implementing responsive design and ensuring cross-browser compatibility.",
-            "Participating in code reviews and providing constructive feedback to other developers.",
+            `Title: 1. Front-End Development:`,
+            `UI Development: Creating user-friendly interfaces with HTML, CSS, and JavaScript (React).`,
+            `Responsive Design: Ensuring UI works on various devices and screen sizes.`,
+            `Cross-Browser Compatibility: Ensuring consistency across different web browsers.`,
+
+            `Title: 2. Back-End Development:`,
+            `Server-Side Logic: Developing server components with languages like Python, Java, or Kotlin.`,
+            `Database Management: Designing and maintaining SQL database systems.`,
+            `API Development: Creating APIs for communication between front-end and back-end.`,
+
+            `Title: 3. Application Architecture:`,
+            `Choosing Technologies: Selecting tools and frameworks for development.`,
+            `System Design: Designing scalable, performant, and secure architecture.`,
+
+            `Title: 4. Version Control:`,
+            `Git: Managing codebase changes and collaboration using Git.`,
+
+            `Title: 5. Testing and Quality Assurance:`,
+            `Unit Testing: Ensuring code reliability through unit tests.`,
+            `Integration Testing: Testing interaction between application components.`,
+            `Bug Fixing: Identifying and resolving issues.`,
+
+            `Title: 6. Deployment and DevOps:`,
+            `Deployment: Managing deployment from development to production.`,
+            `CI/CD: Setting up automated testing and deployment pipelines.`,
+            `Monitoring and Maintenance: Monitoring performance and applying updates.`,
+
+            `Title: 7. Security:`,
+            `Authentication and Authorization: Implementing user authentication and access controls.`,
+            `Data Encryption: Securing data during transmission and storage.`,
+
+            `Title: 8. Collaboration:`,
+            `Team Communication: Working with designers, developers, and stakeholders.`,
+            `Agile Development: Participating in Scrum and other agile methodologies.`,
+
+            `Title: 9. Problem Solving:`,
+            `Debugging: Identifying and fixing code issues.`,
+            `Optimization: Improving performance and efficiency.`,
+
+            `Title: 10. Learning and Adaptation:`,
+            `Staying Current: Keeping up with trends and best practices in web development.`,
         ],
     },
 ];
