@@ -12,6 +12,7 @@ import SwiperCore from 'swiper';
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay, EffectCoverflow } from 'swiper/modules';
 import application from '../assets/images/application.png'
 import linkedin from '../assets/icons/linkedin.svg';
+import instagram from '../assets/icons/instagram.svg';
 
 // Install Swiper modules
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay, EffectCoverflow]);
@@ -110,7 +111,7 @@ const Projects = () => {
                       </div>
                       <div className="box close">
                         <button
-                          className="btn btn-square btn-outline btn-error rounded-2xl h-full w-full"
+                          className="btn btn-square btn-outline btn-error rounded-2xl h-full w-full bg-red-100"
                           onClick={() => setSelectedItem(null)}
                         >
                           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
@@ -130,7 +131,7 @@ const Projects = () => {
                       />
                       <div className="box view">
                         <a href={selectedItem.website} target='_blank'>
-                          <button className="btn btn-outline btn-success rounded-2xl h-full w-full">
+                          <button className="btn btn-outline btn-success rounded-2xl h-full w-full bg-green-100">
                             Open Website
                             <img src={application} />
                           </button>
@@ -140,15 +141,17 @@ const Projects = () => {
                         <button
                           className="btn btn-square btn-outline rounded-2xl h-full w-full"
                         >
-                          <img src={linkedin} />
+                          <a href={selectedItem.social} target='_blank'>
+                            <img className='h-7 w-7' src={selectedItem?.social?.includes('linkedin') ? linkedin : instagram} />
+                          </a>
                         </button>
                       </div>
-                      <div className="box owner flex justify-center items-center">
+                      <div className="box owner flex justify-center items-center font-semibold">
                         <span className='text-sm uppercase px-2 text-center'>
                           {selectedItem?.owner}
                         </span>
                       </div>
-                      <div className="box description flex justify-center items-center">
+                      <div className="box description flex justify-center items-center font-extralight">
                         <span className="text-sm text-center p-1 uppercase">
                           {selectedItem?.description}
                         </span>

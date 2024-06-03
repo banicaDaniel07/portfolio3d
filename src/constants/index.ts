@@ -252,7 +252,7 @@ export const projects: IProject[] = [
         mobile: 'https://i.ibb.co/RHqzj6K/oraroo-mobile.png',
         desktop: 'https://i.ibb.co/s1Z4D95/oraroo-desktop.png',
         website: 'https://www.oraroo.eu',
-        social: 'https://www.linkedin.com/company/oraroo/posts/?feedView=all',
+        social: 'https://www.linkedin.com/company/oraroo',
         owner: 'joined the team and contributed to the application',
         description: `Oraroo is a comprehensive platform designed to streamline and 
         automate HR and project management processes for companies. 
@@ -269,7 +269,7 @@ export const projects: IProject[] = [
         mobile: 'https://i.ibb.co/5TX4yg9/fin-mobile.png',
         desktop: 'https://i.ibb.co/BTQDHS0/fin-desktop.png',
         website: 'https://www.finalitico.eu',
-        social: '',
+        social: 'https://www.linkedin.com/company/finalitico/',
         owner: 'Developed the POC version of the application',
         description: `Finalitico is a financial management platform designed for 
         entrepreneurs and small to medium-sized businesses (SMEs). 
@@ -302,7 +302,7 @@ export const projects: IProject[] = [
         mobile: 'https://i.ibb.co/sRwqKHp/portfolio-mobile.png',
         desktop: 'https://i.ibb.co/m67SpWV/portfolio-desktop.png',
         website: 'https://banica-daniel.netlify.app',
-        social: '',
+        social: 'https://banica-daniel.netlify.app',
         owner: 'old presentation website',
         description: `This website showcases my first portfolio, 
         created before I got a job. It includes mini projects 

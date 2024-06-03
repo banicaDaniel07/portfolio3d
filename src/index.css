@@ -376,6 +376,7 @@ body:has(.card[data-color="green"]:hover) {
 .box {
   background-color: #fff;
   border-radius: 16px;
+  cursor: default;
 }
 
 /* .box:hover {
