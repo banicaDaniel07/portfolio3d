@@ -1,7 +1,7 @@
 import { IProject, projects } from "../constants";
 import CTA from "../components/CTA";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -19,13 +19,29 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay, EffectCoverfl
 
 const Projects = () => {
   const [selectedItem, setSelectedItem] = useState<IProject | null>(null);
+  const [lastIndex, setLastIndex] = useState(1);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setLastIndex(lastIndex => {
+        if (lastIndex < 9) {
+          return lastIndex + 1;
+        } else {
+          clearInterval(intervalId);
+          return lastIndex;
+        }
+      });
+    }, 50);
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <section className='max-container'>
       <h1 className='head-text'>
         My{" "}
         <span className='blue-gradient_text drop-shadow font-semibold'>
-          Projects
+          {'Projects'.slice(0, lastIndex)}
         </span>
       </h1>
 
