@@ -57,7 +57,7 @@ const Projects = () => {
               slideShadows: false,
             }}
             loop
-            // autoplay={{ delay: 3000 }}
+            autoplay={{ delay: 3000 }}
             slidesPerView={2}
             className="m-0 w-full grid relative gap-6 px-12 py-16 my-10 p-4"
             style={{
@@ -92,13 +92,13 @@ const Projects = () => {
                   exit={{ opacity: 0, transition: { duration: 0.2 } }}
                   className='fixed inset-0 z-20'
                   style={{
-                    backgroundColor: '#f5f7f999'
+                    backgroundColor: '#f5f7f9b3'
                   }}
                 />
                 <div className='fixed flex items-center justify-center inset-0 z-30'>
                   <motion.div
                     layoutId={selectedItem?.id}
-                    className=' relative rounded-xl flex flex-col justify-center items-center cursor-pointer shadow-lg text-4xl'
+                    className=' relative rounded-xl flex flex-col justify-center items-center cursor-pointer shadow-2xl text-4xl'
                     style={{
                       backgroundColor: '#d2d2d2',
                       width: 900,

@@ -3,30 +3,26 @@ import { useRef, useState } from "react";
 
 import useAlert from "../hooks/useAlert";
 import Alert from "../components/Alert";
+import Spline from "@splinetool/react-spline";
 
 const Contact = () => {
+  const a = 'https://prod.spline.design/pYMcrRTxMG4Ju8hp/scene.splinecode'
   const formRef: any = useRef();
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState({ name: "Daniel", email: "Danile@Email.com", message: "Hello" });
   const {
     alert,
     // showAlert,
     // hideAlert
   } = useAlert();
   const [loading, setLoading] = useState(false);
-  const [currentAnimation, setCurrentAnimation] = useState("idle");
 
   const handleChange = ({ target: { name, value } }: any) => {
     setForm({ ...form, [name]: value });
   };
 
-  const handleFocus = () => setCurrentAnimation("walk");
-  const handleBlur = () => setCurrentAnimation("idle");
-
   const handleSubmit = (e: any) => {
-    if (currentAnimation === '') return;
     e.preventDefault();
     setLoading(true);
-    setCurrentAnimation("hit");
 
     // emailjs
     //   .send(
@@ -75,10 +71,13 @@ const Contact = () => {
   };
 
   return (
-    <section className='relative flex lg:flex-row flex-col max-container'>
+    <section
+      className='relative flex lg:flex-row flex-col max-container'
+      style={{ maxWidth: '74rem' }}
+    >
       {alert.show && <Alert {...alert} />}
 
-      <div className='flex-1 min-w-[50%] flex flex-col'>
+      <div className='flex-1 w-2/4 flex flex-col z-10 ml-20'>
         <h1 className='head-text'>Get in Touch</h1>
 
         <form
@@ -96,8 +95,6 @@ const Contact = () => {
               required
               value={form.name}
               onChange={handleChange}
-              onFocus={handleFocus}
-              onBlur={handleBlur}
             />
           </label>
           <label className='text-black-500 font-semibold'>
@@ -110,8 +107,6 @@ const Contact = () => {
               required
               value={form.email}
               onChange={handleChange}
-              onFocus={handleFocus}
-              onBlur={handleBlur}
             />
           </label>
           <label className='text-black-500 font-semibold'>
@@ -123,26 +118,31 @@ const Contact = () => {
               placeholder='Write your thoughts here...'
               value={form.message}
               onChange={handleChange}
-              onFocus={handleFocus}
-              onBlur={handleBlur}
             />
           </label>
 
           <button
             type='submit'
             disabled={loading}
-            className='btn'
-            onFocus={handleFocus}
-            onBlur={handleBlur}
+            className={'btn text-white'}
           >
-            {loading ? "Sending..." : "Submit"}
+            {loading ?
+              <>
+                <span className="loading loading-spinner text-black" />
+                <span className="text-black">Sending...</span>
+              </>
+              : "Submit"}
           </button>
         </form>
       </div>
 
-      <div className='lg:w-1/2 w-full lg:h-auto md:h-[550px] h-[350px]'>
+      <div className='flex-1 w-2/4 flex flex-col'>
+        <Spline
+          scene={a}
+        />
 
       </div>
+
     </section>
   );
 };
