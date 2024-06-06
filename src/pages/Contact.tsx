@@ -1,19 +1,16 @@
-// import emailjs from "@emailjs/browser";
+import emailjs from "@emailjs/browser";
 import { useRef, useState } from "react";
 
-import useAlert from "../hooks/useAlert";
-import Alert from "../components/Alert";
 import Spline from "@splinetool/react-spline";
+import { motion } from "framer-motion";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Contact = () => {
   const a = 'https://prod.spline.design/pYMcrRTxMG4Ju8hp/scene.splinecode'
   const formRef: any = useRef();
-  const [form, setForm] = useState({ name: "Daniel", email: "Danile@Email.com", message: "Hello" });
-  const {
-    alert,
-    // showAlert,
-    // hideAlert
-  } = useAlert();
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [loading, setLoading] = useState(false);
 
   const handleChange = ({ target: { name, value } }: any) => {
@@ -24,50 +21,42 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
 
-    // emailjs
-    //   .send(
-    //     import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-    //     import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
-    //     {
-    //       from_name: form.name,
-    //       to_name: "JavaScript Mastery",
-    //       from_email: form.email,
-    //       to_email: "sujata@jsmastery.pro",
-    //       message: form.message,
-    //     },
-    //     import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
-    //   )
-    //   .then(
-    //     () => {
-    //       setLoading(false);
-    //       showAlert({
-    //         show: true,
-    //         text: "Thank you for your message 😃",
-    //         type: "success",
-    //       });
+    const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+    const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+    const userId = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
-    //       setTimeout(() => {
-    //         hideAlert(false);
-    //         setCurrentAnimation("idle");
-    //         setForm({
-    //           name: "",
-    //           email: "",
-    //           message: "",
-    //         });
-    //       }, [3000]);
-    //     },
-    //     (error) => {
-    //       setLoading(false);
-    //       console.error(error);
-    //       setCurrentAnimation("idle");
+    if (!serviceId || !templateId || !userId) {
+      toast.error("Something went wrong 😢");
+      return;
+    }
 
-    //       showAlert({
-    //         show: true,
-    //         text: "I didn't receive your message 😢",
-    //         type: "danger",
-    //       });
-    //     }
-    //   );
+    emailjs
+      .send(
+        serviceId,
+        templateId,
+        {
+          from_name: form.name,
+          from_email: form.email,
+          message: form.message,
+        },
+        userId
+      )
+      .then(
+        () => {
+          toast.success("Thank you for your message 😃");
+          setForm({
+            name: "",
+            email: "",
+            message: "",
+          });
+          setLoading(false);
+
+        },
+        () => {
+          setLoading(false);
+          toast.error("I didn't receive your message 😢");
+        }
+      );
   };
 
   return (
@@ -75,7 +64,6 @@ const Contact = () => {
       className='relative flex lg:flex-row flex-col max-container'
       style={{ maxWidth: '74rem' }}
     >
-      {alert.show && <Alert {...alert} />}
 
       <div className='flex-1 w-2/4 flex flex-col z-10 ml-20'>
         <h1 className='head-text'>Get in Touch</h1>
@@ -95,6 +83,7 @@ const Contact = () => {
               required
               value={form.name}
               onChange={handleChange}
+              disabled={loading}
             />
           </label>
           <label className='text-black-500 font-semibold'>
@@ -107,6 +96,7 @@ const Contact = () => {
               required
               value={form.email}
               onChange={handleChange}
+              disabled={loading}
             />
           </label>
           <label className='text-black-500 font-semibold'>
@@ -118,6 +108,7 @@ const Contact = () => {
               placeholder='Write your thoughts here...'
               value={form.message}
               onChange={handleChange}
+              disabled={loading}
             />
           </label>
 
@@ -142,6 +133,18 @@ const Contact = () => {
         />
 
       </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
 
     </section>
   );
