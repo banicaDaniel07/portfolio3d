@@ -13,6 +13,7 @@ const Home = () => {
   const [showDarkMode, setShowDarkMode] = useState(false)
   const [isPlayingMusic, setIsPlayingMusic] = useState(false);
   const [grabbing, setGrabbing] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   const lightMode = 'https://prod.spline.design/VqE6SZu4SDOg3c-6/scene.splinecode';
   const darkMode = 'https://prod.spline.design/eiqhbn7DxVbIf46H/scene.splinecode';
@@ -23,6 +24,7 @@ const Home = () => {
   const handleDarkModeSwitch = () => {
     setTimeout(() => {
       setShowDarkMode(!showDarkMode);
+      setLoaded(false);
     }, 200)
   }
 
@@ -53,6 +55,10 @@ const Home = () => {
     setGrabbing(false);
   }
 
+  const handleLoaded = () => {
+    setLoaded(true);
+  }
+
   return (
     <section className='w-full h-full'>
       <AnimatePresence>
@@ -79,9 +85,12 @@ const Home = () => {
         onTouchEnd={handleMouseUp}
       >
         <Spline
+          className={loaded ? 'opacity-100' : 'opacity-0'}
           style={{ cursor: grabbing ? 'grabbing' : 'grab' }}
           scene={showDarkMode ? darkMode : lightMode}
+          onLoad={handleLoaded}
         />
+
       </div>
 
       <div className='absolute bottom-2 left-2'>
@@ -102,6 +111,12 @@ const Home = () => {
           defaultChecked
         />
       </div>
+
+      {!loaded ? (
+        <div className="fixed w-full h-full top-0 left-0 bottom-0 right-0 flex justify-center items-center">
+          <span className="loader"></span>
+        </div>
+      ) : ''}
     </section>
   );
 };
