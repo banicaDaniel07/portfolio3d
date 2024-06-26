@@ -1,17 +1,39 @@
 import emailjs from "@emailjs/browser";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import Spline from "@splinetool/react-spline";
-import { motion } from "framer-motion";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import moment from "moment";
+import _ from "lodash";
+import { getTimeFromSeconds } from "../utils/date-utils";
+import { CONTACT_ANIMATION, LAST_MESSAGE, ONE_HOUR } from "../utils/constants";
 
 
 const Contact = () => {
-  const a = 'https://prod.spline.design/pYMcrRTxMG4Ju8hp/scene.splinecode'
   const formRef: any = useRef();
+  let timer: any = null;
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [loading, setLoading] = useState(false);
+  const [messageTimeLeft, setMessageTimeLeft] = useState<any>(0);
+
+  useEffect(() => {
+    if (!_.isNil(localStorage.getItem(LAST_MESSAGE))) {
+      calculateTimeLeft();
+      startCountdown();
+    }
+  }, [])
+
+  const startCountdown = () => {
+    clearInterval(timer);
+    timer = setInterval(() => {
+      calculateTimeLeft();
+    }, 1000);
+  }
+
+  const calculateTimeLeft = () => {
+    setMessageTimeLeft(moment().diff(moment(localStorage.getItem(LAST_MESSAGE)), 'seconds'));
+  }
 
   const handleChange = ({ target: { name, value } }: any) => {
     setForm({ ...form, [name]: value });
@@ -44,12 +66,15 @@ const Contact = () => {
       .then(
         () => {
           toast.success("Thank you for your message 😃");
+          localStorage.setItem(LAST_MESSAGE, moment().toString())
+          calculateTimeLeft();
           setForm({
             name: "",
             email: "",
             message: "",
           });
           setLoading(false);
+          startCountdown();
 
         },
         () => {
@@ -114,7 +139,7 @@ const Contact = () => {
 
           <button
             type='submit'
-            disabled={loading}
+            disabled={loading || messageTimeLeft < ONE_HOUR}
             className={'btn text-white'}
           >
             {loading ?
@@ -122,14 +147,18 @@ const Contact = () => {
                 <span className="loading loading-spinner text-black" />
                 <span className="text-black">Sending...</span>
               </>
-              : "Submit"}
+              :
+              messageTimeLeft < ONE_HOUR ?
+                <span className="text-black">{getTimeFromSeconds(ONE_HOUR - messageTimeLeft)}</span>
+                :
+                "Submit"}
           </button>
         </form>
       </div>
 
       <div className='flex-1 w-2/4 flex flex-col'>
         <Spline
-          scene={a}
+          scene={CONTACT_ANIMATION}
         />
 
       </div>
