@@ -50,6 +50,7 @@ const Contact = () => {
 
     if (!serviceId || !templateId || !userId) {
       toast.error("Something went wrong 😢");
+      setLoading(false);
       return;
     }
 
