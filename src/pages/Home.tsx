@@ -102,7 +102,7 @@ const Home = () => {
         />
       </div>
 
-      <div className='absolute bottom-2 right-2'>
+      {/* <div className='absolute bottom-2 right-2'>
         <input
           type="checkbox"
           onClick={handleDarkModeSwitch}
@@ -110,7 +110,7 @@ const Home = () => {
           className="toggle theme-controller bg-amber-300 border-sky-400 [--tglbg:theme(colors.sky.500)] checked:bg-blue-300 checked:border-blue-800 checked:[--tglbg:theme(colors.blue.900)] row-start-1 col-start-1 col-span-2 mt-2 ml-2"
           defaultChecked
         />
-      </div>
+      </div> */}
 
       {!loaded ? (
         <div className="fixed w-full h-full top-0 left-0 bottom-0 right-0 flex justify-center items-center">
