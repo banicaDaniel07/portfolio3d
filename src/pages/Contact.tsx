@@ -15,7 +15,7 @@ const Contact = () => {
   let timer: any = null;
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [loading, setLoading] = useState(false);
-  const [messageTimeLeft, setMessageTimeLeft] = useState<any>(0);
+  const [messageTimeLeft, setMessageTimeLeft] = useState<any>(3600);
 
   const startCountdown = () => {
     clearInterval(timer);
