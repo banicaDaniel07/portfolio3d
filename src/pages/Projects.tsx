@@ -146,10 +146,10 @@ const Projects = () => {
                         }}
                       />
                       <div className="box view">
-                        <a href={selectedItem.website} target='_blank'>
+                        <a href={selectedItem.website} target='_blank' rel="noreferrer">
                           <button className="btn btn-outline btn-success rounded-2xl h-full w-full bg-green-100">
                             Open Website
-                            <img src={application} />
+                            <img src={application} alt="application" />
                           </button>
                         </a>
                       </div>
@@ -157,8 +157,8 @@ const Projects = () => {
                         <button
                           className="btn btn-square btn-outline rounded-2xl h-full w-full"
                         >
-                          <a href={selectedItem.social} target='_blank'>
-                            <img className='h-7 w-7' src={selectedItem?.social?.includes('linkedin') ? linkedin : instagram} />
+                          <a href={selectedItem.social} target='_blank' rel="noreferrer">
+                            <img className='h-7 w-7' src={selectedItem?.social?.includes('linkedin') ? linkedin : instagram} alt="social" />
                           </a>
                         </button>
                       </div>

@@ -17,19 +17,20 @@ const Contact = () => {
   const [loading, setLoading] = useState(false);
   const [messageTimeLeft, setMessageTimeLeft] = useState<any>(0);
 
-  useEffect(() => {
-    if (!_.isNil(localStorage.getItem(LAST_MESSAGE))) {
-      calculateTimeLeft();
-      startCountdown();
-    }
-  }, [])
-
   const startCountdown = () => {
     clearInterval(timer);
     timer = setInterval(() => {
       calculateTimeLeft();
     }, 1000);
   }
+
+  useEffect(() => {
+    if (!_.isNil(localStorage.getItem(LAST_MESSAGE))) {
+      calculateTimeLeft();
+      startCountdown();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const calculateTimeLeft = () => {
     setMessageTimeLeft(moment().diff(moment(localStorage.getItem(LAST_MESSAGE)), 'seconds'));

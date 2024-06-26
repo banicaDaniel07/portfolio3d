@@ -8,25 +8,24 @@ import soundon from '../assets/images/soundon.png'
 import HomeInfo from "../components/HomeInfo";
 import Spline from "@splinetool/react-spline";
 import { addScrollToMain, removeScrollFromMain } from "../utils/style-utils";
+import { LIGHT_MODE_ANIMATION } from "../utils/constants";
 
 const Home = () => {
-  const [showDarkMode, setShowDarkMode] = useState(false)
+  // const [showDarkMode, setShowDarkMode] = useState(false)
   const [isPlayingMusic, setIsPlayingMusic] = useState(false);
   const [grabbing, setGrabbing] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
-  const lightMode = 'https://prod.spline.design/VqE6SZu4SDOg3c-6/scene.splinecode';
-  const darkMode = 'https://prod.spline.design/eiqhbn7DxVbIf46H/scene.splinecode';
   const audioRef = useRef(new Audio(sakura));
   audioRef.current.volume = 0.4;
   audioRef.current.loop = true;
 
-  const handleDarkModeSwitch = () => {
-    setTimeout(() => {
-      setShowDarkMode(!showDarkMode);
-      setLoaded(false);
-    }, 200)
-  }
+  // const handleDarkModeSwitch = () => {
+  //   setTimeout(() => {
+  //     setShowDarkMode(!showDarkMode);
+  //     setLoaded(false);
+  //   }, 200)
+  // }
 
   useEffect(() => {
     removeScrollFromMain();
@@ -87,7 +86,8 @@ const Home = () => {
         <Spline
           className={loaded ? 'opacity-100' : 'opacity-0'}
           style={{ cursor: grabbing ? 'grabbing' : 'grab' }}
-          scene={showDarkMode ? darkMode : lightMode}
+          // scene={showDarkMode ? darkMode : lightMode}
+          scene={LIGHT_MODE_ANIMATION}
           onLoad={handleLoaded}
         />
 
