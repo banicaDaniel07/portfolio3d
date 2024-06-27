@@ -142,7 +142,7 @@ const Contact = () => {
           <button
             type='submit'
             disabled={loading || messageTimeLeft < ONE_HOUR}
-            className={'btn text-white'}
+            className={'btn text-white hover:scale-105'}
           >
             {loading ?
               <>

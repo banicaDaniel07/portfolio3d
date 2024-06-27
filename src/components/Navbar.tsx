@@ -72,16 +72,32 @@ const Navbar = () => {
       <NavLink
         onClick={handleCloseMenu}
         to='/'
-        className="z-50"
+        className="z-50 hover:scale-105"
       >
         <img src={logo} alt='logo' className='w-12 h-12 object-contain' />
       </NavLink>
       <nav className='less-than-400:hidden flex text-lg gap-7 font-medium'>
-        <NavLink to='/about' className={({ isActive }) => isActive ? "text-blue-500" : "text-black"}>
-          About
+        <NavLink
+          to='/about'
+          className={({ isActive }) => (isActive ? "text-blue-500" : "text-black") + ' flex items-center w-20'}
+        >
+          <span className={'w-20 text-center'}>
+            About
+            <svg viewBox="0 0 70 36">
+              <path d="M6.9739 30.8153H63.0244C65.5269 30.8152 75.5358 -3.68471 35.4998 2.81531C-16.1598 11.2025 0.894099 33.9766 26.9922 34.3153C104.062 35.3153 54.5169 -6.68469 23.489 9.31527" />
+            </svg>
+          </span>
         </NavLink>
-        <NavLink to='/projects' className={({ isActive }) => isActive ? "text-blue-500" : "text-black"}>
-          Projects
+        <NavLink
+          to='/projects'
+          className={({ isActive }) => (isActive ? "text-blue-500" : "text-black") + ' flex items-center w-20'}
+        >
+          <span className={'w-20 text-center'}>
+            Projects
+            <svg viewBox="0 0 70 36">
+              <path d="M6.9739 30.8153H63.0244C65.5269 30.8152 75.5358 -3.68471 35.4998 2.81531C-16.1598 11.2025 0.894099 33.9766 26.9922 34.3153C104.062 35.3153 54.5169 -6.68469 23.489 9.31527" />
+            </svg>
+          </span>
         </NavLink>
       </nav>
       <nav className="less-than-400:block hidden text-black z-50">
