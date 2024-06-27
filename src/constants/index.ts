@@ -253,19 +253,19 @@ export const experiences = [
 
 export const socialLinks = [
     {
-        name: 'Contact',
+        name: 'Phone',
         iconUrl: contact,
-        link: '/contact',
+        link: 'tel:+40736533401',
     },
     {
         name: 'GitHub',
         iconUrl: github,
-        link: 'https://github.com/YourGitHubUsername',
+        link: 'https://github.com/banicaDaniel07',
     },
     {
         name: 'LinkedIn',
         iconUrl: linkedin,
-        link: 'https://www.linkedin.com/in/YourLinkedInUsername',
+        link: 'https://www.linkedin.com/in/daniel-banica-8b5643214/',
     }
 ];
 
@@ -349,7 +349,3 @@ export const projects: IProject[] = [
         view of my expertise and accomplishments.`,
     },
 ];
-// iconUrl: react,
-// theme: 'btn-back-red',
-// description: 'Developed a web application that tracks and notifies users of price changes for products on Amazon, helping users find the best deals.',
-// link: '',
