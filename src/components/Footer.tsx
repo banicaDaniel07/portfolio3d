@@ -21,11 +21,8 @@ const Footer = () => {
 
         <div className='flex gap-3 justify-center items-center'>
           {socialLinks.map((link) => (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.1 }}
-              className="tooltip tooltip-top" data-tip={link.name}>
+            <div
+              className="hover:scale-105">
               <div onClick={() => handleLinkClicked(link.link)} className=" cursor-pointer" key={link.name}>
                 <img
                   src={link.iconUrl}
@@ -33,7 +30,7 @@ const Footer = () => {
                   className='w-6 h-6 object-contain'
                 />
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
