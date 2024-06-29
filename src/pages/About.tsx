@@ -9,11 +9,13 @@ import "react-vertical-timeline-component/style.min.css";
 import CTA from "../components/CTA";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { scrollTop } from "../utils/style-utils";
 
 const About = () => {
   const [lastIndex, setLastIndex] = useState(1);
 
   useEffect(() => {
+    scrollTop();
     const intervalId = setInterval(() => {
       setLastIndex(lastIndex => {
         if (lastIndex < skills.length) {

@@ -15,3 +15,13 @@ export const addScrollToMain = () => {
         mainElement?.classList?.add('overflow-y-scroll');
     }
 }
+
+export const scrollTop = () => {
+    const mainCollection = document.getElementsByTagName('main');
+    if (!_.isEmpty(mainCollection) && !_.isNil(mainCollection)) {
+        const mainElement = mainCollection[0];
+        if (!_.isNil(mainElement)) {
+            mainElement.scrollTop = 0;
+        }
+    }
+}

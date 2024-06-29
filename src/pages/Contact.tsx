@@ -8,6 +8,7 @@ import moment from "moment";
 import _ from "lodash";
 import { getTimeFromSeconds } from "../utils/date-utils";
 import { CONTACT_ANIMATION, LAST_MESSAGE, ONE_HOUR } from "../utils/constants";
+import { scrollTop } from "../utils/style-utils";
 
 
 const Contact = () => {
@@ -25,6 +26,7 @@ const Contact = () => {
   }
 
   useEffect(() => {
+    scrollTop();
     if (!_.isNil(localStorage.getItem(LAST_MESSAGE))) {
       calculateTimeLeft();
       startCountdown();

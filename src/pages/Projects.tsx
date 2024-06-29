@@ -13,6 +13,7 @@ import { Navigation, Pagination, Scrollbar, A11y, Autoplay, EffectCoverflow } fr
 import application from '../assets/images/application.png'
 import linkedin from '../assets/icons/linkedin.svg';
 import instagram from '../assets/icons/instagram.svg';
+import { scrollTop } from "../utils/style-utils";
 
 // Install Swiper modules
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay, EffectCoverflow]);
@@ -22,6 +23,7 @@ const Projects = () => {
   const [lastIndex, setLastIndex] = useState(1);
 
   useEffect(() => {
+    scrollTop();
     const intervalId = setInterval(() => {
       setLastIndex(lastIndex => {
         if (lastIndex < 9) {
