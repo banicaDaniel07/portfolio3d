@@ -40,14 +40,14 @@ const Projects = () => {
 
   return (
     <section className='max-container'>
-      <h1 className='head-text'>
+      <h1 className='projects-title head-text'>
         My{" "}
         <span className='blue-gradient_text drop-shadow font-semibold'>
           {'Projects'.slice(0, lastIndex)}
         </span>
       </h1>
 
-      <p className='text-slate-500 mt-2 leading-relaxed'>
+      <p className='projects-description text-slate-500 mt-2 leading-relaxed'>
         Throughout my professional journey, I've undertaken a diverse array of projects,
         each presenting unique challenges and opportunities for growth.
         From pioneering initiatives with startups to contributing innovative
@@ -58,7 +58,7 @@ const Projects = () => {
         Your collaboration is highly valued!
       </p>
 
-      <div className='overflow-hidden'>
+      <div className='projects-slider overflow-hidden'>
         <motion.div
           initial={{ translateY: 380, scale: 0 }}
           animate={{ translateY: 0, scale: 1 }}
@@ -86,7 +86,7 @@ const Projects = () => {
             {projects.map((item) => (
               <SwiperSlide key={item.id} className='h-full'>
                 <motion.div
-                  className='bg-center bg-no-repeat bg-cover rounded-lg will-change-transform bg-slate-500 flex flex-col items-center justify-center cursor-pointer h-full my-10'
+                  className='projects-container bg-center bg-no-repeat bg-cover rounded-lg will-change-transform bg-slate-500 flex flex-col items-center justify-center cursor-pointer h-full my-10'
                   style={{
                     boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',
                     backgroundImage: `url(${item.tumbnail})`,
