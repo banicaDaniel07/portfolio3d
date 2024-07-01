@@ -1,5 +1,4 @@
 import { socialLinks } from "../constants";
-import { motion } from "framer-motion";
 
 const Footer = () => {
 

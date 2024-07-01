@@ -505,10 +505,6 @@ span {
   @media screen and (max-width: 660px) {
     grid-gap: 40px;
   }
-
-  /* @media screen and (max-width: 510px) {
-    grid-gap: 34px;
-  } */
 }
 
 .about-experience-title {
@@ -544,3 +540,4 @@ span {
     font-size: 12px;
   }
 }
+/* Project Section */
