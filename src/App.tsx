@@ -10,7 +10,7 @@ import './App.css';
 
 const App = () => {
   return (
-    <main className='bg-red-300 h-screen overflow-y-scroll overflow-x-hidden'>
+    <main className='bg-slate-300/20 h-screen overflow-y-scroll overflow-x-hidden'>
       <Router>
         <Navbar />
         <Routes>
