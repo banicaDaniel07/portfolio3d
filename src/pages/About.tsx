@@ -32,8 +32,8 @@ const About = () => {
 
   return (
     <section className='max-container'>
-      <h1 className='head-text'>
-        Hello, I'm{" "}
+      <h1 className='about-title head-text'>
+        Hello, <br className="about-break" /> I'm{" "}
         <span className='blue-gradient_text font-semibold drop-shadow'>
           {" "}
           Daniel
@@ -41,7 +41,7 @@ const About = () => {
         👋
       </h1>
 
-      <div className='mt-5 flex flex-col gap-3 text-slate-500'>
+      <div className='about-description mt-5 flex flex-col gap-3 text-slate-500'>
         <p>
           Software Engineer based in Romania, specializing in full-stack development to
           design, develop, and deploy end-to-end web applications, combining expertise in
@@ -49,16 +49,16 @@ const About = () => {
         </p>
       </div>
 
-      <div className='py-10 flex flex-col'>
+      <div className='about-skills-title py-10 flex flex-col'>
         <h3 className='subhead-text'>My Skills</h3>
 
-        <div className='mt-16 flex flex-wrap gap-12'>
+        <div className='about-skills-description mt-16 flex flex-wrap gap-12'>
           {skills.slice(0, lastIndex).map((skill) => (
             <motion.div
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.1 }}
-              className="tooltip tooltip-right" data-tip={skill.name}>
+              className="tooltip tooltip-top" data-tip={skill.name}>
               <div className='block-container w-20 h-20 cursor-pointer' key={skill.name}>
                 <div className='btn-back rounded-xl' />
                 <div className='btn-front rounded-xl flex justify-center items-center'>
@@ -75,8 +75,8 @@ const About = () => {
       </div>
 
       <div className='py-16'>
-        <h3 className='subhead-text'>Work Experience.</h3>
-        <div className='mt-5 flex flex-col gap-3 text-slate-500'>
+        <h3 className='about-experience-title subhead-text'>Work Experience.</h3>
+        <div className='about-experience-description mt-5 flex flex-col gap-3 text-slate-500'>
           <p>
             Seasoned professional with a diverse background, continuously enhancing
             skills and collaborating with talented peers. Currently driving innovation
@@ -109,18 +109,18 @@ const About = () => {
                 }}
               >
                 <div>
-                  <h3 className='text-black text-xl font-poppins font-semibold'>
+                  <h3 className='about-timeline-title text-black text-xl font-poppins font-semibold'>
                     {experience.title}
                   </h3>
                   <p
-                    className='text-black-500 font-medium text-base'
+                    className='about-timeline-subtitle text-black-500 font-medium text-base'
                     style={{ margin: 0 }}
                   >
                     {experience.company_name}
                   </p>
                 </div>
 
-                <ul className='my-5 ml-5 mt-1'>
+                <ul className='about-timeline-description my-5 ml-5 mt-1'>
                   {experience.points.map((point, index) => point.includes('Title: ') ? (
                     <li className='text-black-500/50 font-semibold mt-2'>
                       {point.replace('Title: ', '')}

@@ -30,6 +30,11 @@ body:has(.card[data-color="green"]:hover) {
   padding-left: 4rem;
   padding-right: 4rem;
   min-height: calc(100vh - 80px);
+
+  @media screen and (max-width: 1000px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
 
 .head-text {
@@ -134,7 +139,7 @@ body:has(.card[data-color="green"]:hover) {
     padding: 1rem 2rem;
   }
 
-  @media screen and (max-width: 1060px) {
+  @media screen and (max-width: 1100px) {
     margin-left: 1rem;
     margin-right: 1rem;
   }
@@ -446,5 +451,96 @@ span {
     --stroke: #275EFE;
     --stroke-delay: .1s;
     --offset: 180px;
+  }
+}
+
+/* About Section */
+.about-title {
+  text-align: start;
+
+  @media screen and (max-width: 1000px) {
+    text-align: center;
+  }
+
+  @media screen and (max-width: 530px) {
+    font-size: 40px;
+  }
+
+  @media screen and (max-width: 440px) {
+    font-size: 34px;
+  }
+}
+
+.about-break {
+  display: none;
+
+  @media screen and (max-width: 400px) {
+    display: flex;
+  }
+}
+
+.about-description {
+  text-align: start;
+
+  @media screen and (max-width: 1000px) {
+    text-align: center;
+  }
+}
+
+.about-skills-title {
+  text-align: start;
+
+  @media screen and (max-width: 1000px) {
+    text-align: center;
+  }
+}
+
+.about-skills-description {
+  justify-content: flex-start;
+
+  @media screen and (max-width: 1000px) {
+    justify-content: center;
+  }
+
+  @media screen and (max-width: 660px) {
+    grid-gap: 40px;
+  }
+
+  /* @media screen and (max-width: 510px) {
+    grid-gap: 34px;
+  } */
+}
+
+.about-experience-title {
+  text-align: flex-start;
+
+  @media screen and (max-width: 1000px) {
+    text-align: center;
+  }
+}
+
+.about-experience-description {
+  text-align: flex-start;
+
+  @media screen and (max-width: 1000px) {
+    text-align: center;
+  }
+}
+
+.about-timeline-title {
+  @media screen and (max-width: 400px) {
+    font-size: 16px;
+  }
+}
+
+.about-timeline-subtitle {
+  @media screen and (max-width: 400px) {
+    font-size: 10px;
+  }
+}
+
+.about-timeline-description {
+  @media screen and (max-width: 400px) {
+    font-size: 12px;
   }
 }
