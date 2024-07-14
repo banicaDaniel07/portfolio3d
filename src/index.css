@@ -212,6 +212,10 @@ body:has(.card[data-color="green"]:hover) {
   align-items: center;
   justify-content: space-between;
   gap: 1.75rem;
+
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+  }
 }
 
 .cta-text {
@@ -219,6 +223,20 @@ body:has(.card[data-color="green"]:hover) {
   font-weight: 800;
   font-size: 1.875rem;
   text-align: start;
+
+  @media screen and (max-width: 1000px) {
+    font-size: 24px;
+  }
+
+  @media screen and (max-width: 660px) {
+    font-size: 20px;
+  }
+
+  @media screen and (max-width: 500px) {
+    font-weight: 400;
+    text-align: center;
+    font-size: 18px;
+  }
 }
 
 
