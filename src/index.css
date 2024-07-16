@@ -159,6 +159,11 @@ body:has(.card[data-color="green"]:hover) {
   display: flex;
   flex-direction: column;
   gap: 1.75rem;
+
+  @media screen and (max-width: 600px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
 
 .footer-container {
@@ -168,6 +173,10 @@ body:has(.card[data-color="green"]:hover) {
   gap: 1.75rem;
   align-items: center;
   justify-content: space-between;
+
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+  }
 }
 
 .info-box {
