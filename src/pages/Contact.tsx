@@ -94,7 +94,7 @@ const Contact = () => {
     >
 
       <div className='lg:w-1/3 w-4/5 flex flex-col z-10 mb-20 ml-auto mr-auto lg:ml-16 sm:w-2/3'>
-        <h1 className='head-text'>Get in Touch</h1>
+        <h1 className='about-head-text'>Get in Touch</h1>
 
         <form
           ref={formRef}

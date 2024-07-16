@@ -54,6 +54,12 @@ body:has(.card[data-color="green"]:hover) {
   font-size: 3rem;
   font-weight: 600;
   line-height: 1.4;
+}
+
+.about-head-text {
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1.4;
 
   @media screen and (max-width: 1000px) {
     text-align: center;
