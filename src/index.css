@@ -41,10 +41,27 @@ body:has(.card[data-color="green"]:hover) {
   }
 }
 
+.contact-container {
+  max-width: 64rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 126px !important;
+  padding-bottom: 0.75rem;
+  min-height: calc(100vh - 80px);
+}
+
 .head-text {
   font-size: 3rem;
   font-weight: 600;
   line-height: 1.4;
+
+  @media screen and (max-width: 1000px) {
+    text-align: center;
+  }
+
+  @media screen and (max-width: 530px) {
+    font-size: 2rem;
+  }
 }
 
 .subhead-text {

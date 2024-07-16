@@ -90,17 +90,16 @@ const Contact = () => {
 
   return (
     <section
-      className='relative flex lg:flex-row flex-col max-container'
-      style={{ maxWidth: '74rem' }}
+      className='relative flex lg:flex-row flex-col contact-container'
     >
 
-      <div className='flex-1 w-2/4 flex flex-col z-10 ml-20'>
+      <div className='lg:w-1/3 w-4/5 flex flex-col z-10 mb-20 ml-auto mr-auto lg:ml-16 sm:w-2/3'>
         <h1 className='head-text'>Get in Touch</h1>
 
         <form
           ref={formRef}
           onSubmit={handleSubmit}
-          className='w-full flex flex-col gap-7 mt-14'
+          className='w-full flex flex-col gap-7 mt-7 sm:mt-9 lg:mt-11'
         >
           <label className='text-black-500 font-semibold'>
             Name
@@ -160,7 +159,7 @@ const Contact = () => {
         </form>
       </div>
 
-      <div className='flex-1 w-2/4 flex flex-col'>
+      <div className='lg:w-2/3 w-full flex flex-col pl-5 pr-5' style={{ height: 590 }}>
         <Spline
           scene={CONTACT_ANIMATION}
         />
