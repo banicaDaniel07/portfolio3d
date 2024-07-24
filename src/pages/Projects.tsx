@@ -116,12 +116,7 @@ const Projects = () => {
                 <div className='fixed flex items-center justify-center inset-0 z-30'>
                   <motion.div
                     layoutId={selectedItem?.id}
-                    className=' relative rounded-xl flex flex-col justify-center items-center cursor-pointer shadow-2xl text-4xl'
-                    style={{
-                      backgroundColor: '#d2d2d2',
-                      width: 900,
-                      height: 600,
-                    }}
+                    className='project-detail relative rounded-xl flex flex-col justify-center items-center cursor-pointer shadow-2xl text-4xl'
                   >
                     <div className='grid_container'>
                       <div className="box title flex items-center justify-center">
@@ -136,19 +131,19 @@ const Projects = () => {
                         </button>
                       </div>
                       <div
-                        className="box mobile bg-center bg-no-repeat bg-contain"
+                        className="box mobile bg-center bg-no-repeat bg-cover"
                         style={{
                           backgroundImage: `url(${selectedItem.mobile})`,
                         }}
                       />
                       <div
-                        className="box image bg-center bg-no-repeat bg-contain"
+                        className="box image bg-center bg-no-repeat bg-cover"
                         style={{
                           backgroundImage: `url(${selectedItem.desktop})`,
                         }}
                       />
                       <div className="box view">
-                        <a href={selectedItem.website} target='_blank' rel="noreferrer">
+                        <a className="h-full w-full flex" href={selectedItem.website} target='_blank' rel="noreferrer">
                           <button className="btn btn-outline btn-success rounded-2xl h-full w-full bg-green-100">
                             Open Website
                             <img src={application} alt="application" />
@@ -170,7 +165,7 @@ const Projects = () => {
                         </span>
                       </div>
                       <div className="box description flex justify-center items-center font-extralight">
-                        <span className="text-sm text-center p-1 uppercase">
+                        <span className="description-text text-center p-1 uppercase">
                           {selectedItem?.description}
                         </span>
                       </div>

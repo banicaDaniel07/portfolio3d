@@ -411,6 +411,66 @@ body:has(.card[data-color="green"]:hover) {
     "mobile mobile mobile social description description description description description description"
     "view view owner owner description description description description description description"
     "view view owner owner description description description description description description";
+
+  @media screen and (max-width: 930px) {
+    grid-template-areas:
+      "title title title title title title title title title close"
+      "image image image image image image image image image image"
+      "image image image image image image image image image image"
+      "image image image image image image image image image image"
+      "image image image image image image image image image image"
+      "image image image image image image image image image image"
+      "image image image image image image image image image image"
+      "owner owner owner description description description description description description description"
+      "owner owner owner description description description description description description description"
+      "view view social description description description description description description description";
+  }
+
+  @media screen and (max-width: 620px) {
+    grid-template-areas:
+      "title title title title title title title title close close"
+      "image image image image image image image image image image"
+      "image image image image image image image image image image"
+      "image image image image image image image image image image"
+      "image image image image image image image image image image"
+      "owner owner owner description description description description description description description"
+      "owner owner owner description description description description description description description"
+      "owner owner owner description description description description description description description"
+      "owner owner owner description description description description description description description"
+      "view view view description description description description description description description";
+  }
+
+  @media screen and (max-width: 410px) {
+    grid-template-areas:
+      "title title title title title title title title close close"
+      "mobile mobile mobile mobile mobile mobile mobile mobile mobile mobile"
+      "mobile mobile mobile mobile mobile mobile mobile mobile mobile mobile"
+      "mobile mobile mobile mobile mobile mobile mobile mobile mobile mobile"
+      "mobile mobile mobile mobile mobile mobile mobile mobile mobile mobile"
+      "mobile mobile mobile mobile mobile mobile mobile mobile mobile mobile"
+      "mobile mobile mobile mobile mobile mobile mobile mobile mobile mobile"
+      "mobile mobile mobile mobile mobile mobile mobile mobile mobile mobile"
+      "view view view owner owner owner owner owner owner owner"
+      "view view view owner owner owner owner owner owner owner";
+  }
+}
+
+.project-detail {
+  background-color: #d2d2d2;
+  width: 900px;
+  height: 600px;
+
+  @media screen and (max-width: 930px) {
+    width: 600px;
+  }
+
+  @media screen and (max-width: 620px) {
+    width: 400px;
+  }
+
+  @media screen and (max-width: 410px) {
+    width: 280px;
+  }
 }
 
 .close {
@@ -423,26 +483,65 @@ body:has(.card[data-color="green"]:hover) {
 
 .image {
   grid-area: image;
+  display: block;
+
+  @media screen and (max-width: 410px) {
+    display: none;
+  }
 }
 
 .mobile {
   grid-area: mobile;
+  display: block;
+
+  @media screen and (max-width: 930px) {
+    display: none;
+  }
+
+  @media screen and (max-width: 410px) {
+    display: block;
+  }
 }
 
 .description {
   grid-area: description;
+  display: block;
+
+
+  @media screen and (max-width: 410px) {
+    display: none;
+  }
+}
+
+.description-text {
+  font-size: 14px;
+  line-height: 20px;
+
+  @media screen and (max-width: 930px) {
+    font-size: 12px !important;
+  }
 }
 
 .view {
   grid-area: view;
+  display: block;
 }
 
 .social {
   grid-area: social;
+  display: block;
+
+  @media screen and (max-width: 620px) {
+    display: none;
+  }
 }
 
 .owner {
   grid-area: owner;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .box {
