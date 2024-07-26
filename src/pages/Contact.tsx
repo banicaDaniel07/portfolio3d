@@ -159,11 +159,11 @@ const Contact = () => {
         </form>
       </div>
 
-      <div className='lg:w-2/3 w-full flex flex-col pl-5 pr-5' style={{ height: 590 }}>
+      <div className='lg:w-2/3 w-full flex flex-col relative' style={{ height: 590 }}>
+        <div className="absolute w-full h-full" />
         <Spline
           scene={CONTACT_ANIMATION}
         />
-
       </div>
       <ToastContainer
         position="bottom-right"
