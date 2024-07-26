@@ -55,6 +55,7 @@ const About = () => {
         <div className='about-skills-description mt-16 flex flex-wrap gap-12'>
           {skills.slice(0, lastIndex).map((skill) => (
             <motion.div
+              key={`about-skill-${skill.name}`}
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.1 }}
@@ -122,7 +123,7 @@ const About = () => {
 
                 <ul className='about-timeline-description my-5 ml-5 mt-1'>
                   {experience.points.map((point, index) => point.includes('Title: ') ? (
-                    <li className='text-black-500/50 font-semibold mt-2'>
+                    <li key={`about-timeline-${index}`} className='text-black-500/50 font-semibold mt-2'>
                       {point.replace('Title: ', '')}
                     </li>
                   ) : (

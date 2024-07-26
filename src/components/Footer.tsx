@@ -21,6 +21,7 @@ const Footer = () => {
         <div className='flex gap-3 justify-center items-center'>
           {socialLinks.map((link) => (
             <div
+              key={`footer-social-${link.name}`}
               className="hover:scale-105">
               <div onClick={() => handleLinkClicked(link.link)} className=" cursor-pointer" key={link.name}>
                 <img
